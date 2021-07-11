@@ -5,19 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Horizontal_Guide"
         mc:Ignorable="d"
-        Title="Horizon Guide" Height="450" Width="800">
+        Title="Horizon Guide" Height="450" Width="800"
+        AllowsTransparency="True" WindowStyle="None">
+
+    <Window.Background>
+        <SolidColorBrush Opacity="0" Color="White"/>
+    </Window.Background>
+    
     <Grid Margin="10">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-
         
+        <Slider x:Name="line_height_slider" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Width="300" RenderTransformOrigin="0.5,0.5" Orientation="Horizontal">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+
+
     </Grid>
 </Window>
