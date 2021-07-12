@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Horizontal_Guide"
         mc:Ignorable="d"
-        Title="Horizon Guide" Height="450" Width="800"
+        Title="Horizon Guide" Height="450" Width="800" 
+        WindowState="Maximized" SizeToContent="Manual"
         AllowsTransparency="True" WindowStyle="None">
 
     <Window.Background>
@@ -24,7 +25,8 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         
-        <Slider x:Name="line_height_slider" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Width="300" RenderTransformOrigin="0.5,0.5" Orientation="Horizontal">
+        <Slider x:Name="line_height_slider" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Width="400
+                " RenderTransformOrigin="0.5,0.5"  Cursor="None">
             <Slider.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -35,6 +37,12 @@
             </Slider.RenderTransform>
         </Slider>
 
-
+        <Canvas Height="Auto" Width="Auto">
+            <Line
+                X1="10" Y1="60"
+                X2="1000" Y2="60"
+                Stroke="White"
+                StrokeThickness="4" />
+        </Canvas>
     </Grid>
 </Window>
