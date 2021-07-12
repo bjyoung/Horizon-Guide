@@ -24,5 +24,17 @@ namespace Horizontal_Guide
         {
             InitializeComponent();
         }
+
+        private void line_height_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get slider as reference
+            var slider = sender as Slider;
+
+            // Get value
+            double value = slider.Value;
+
+            // Set title
+            this.Title = "Value: " + value.ToString("0.0") + "/" + slider.Maximum;
+        }
     }
 }
