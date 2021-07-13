@@ -40,8 +40,9 @@
 
         <Canvas Height="Auto" Width="Auto">
             <Line
-                X1="10" Y1="60"
-                X2="1000" Y2="60"
+                x:Name="horizon_guide"
+                X1="10" Y1="{Binding ElementName=line_height_slider, Path=Width}"
+                X2="1000" Y2="{Binding ElementName=line_height_slider, Path=Width}"
                 Stroke="White"
                 StrokeThickness="4" />
         </Canvas>

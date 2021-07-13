@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Controls.Primitives;
 
 namespace Horizontal_Guide
 {
@@ -28,13 +29,25 @@ namespace Horizontal_Guide
         private void line_height_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             // Get slider as reference
-            var slider = sender as Slider;
+            Slider slider = sender as Slider;
+
+            // Get thumb position
+            Thumb thumb = slider.Template.FindName("thumb", slider) as Thumb;
 
             // Get value
             double value = slider.Value;
+            double slider_height = slider.ActualHeight;
+            set_line_height(value + slider_height);
 
             // Set title
-            this.Title = "Value: " + value.ToString("0.0") + "/" + slider.Maximum;
+            Title = "Value: " + value.ToString("0.0") + "/" + slider.Maximum;
+        }
+
+        private void set_line_height(double new_height) 
+        {
+            var line = horizon_guide as Line;
+            line.Y1 = new_height;
+            line.Y2 = new_height;
         }
     }
 }
