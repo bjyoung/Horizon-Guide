@@ -6,45 +6,29 @@
         xmlns:local="clr-namespace:Horizontal_Guide"
         mc:Ignorable="d"
         Title="Horizon Guide" Height="450" Width="800" 
-        WindowState="Maximized" SizeToContent="Manual">
-    <!--AllowsTransparency="True" WindowStyle="None">-->
+        WindowState="Maximized" SizeToContent="Manual"
+        AllowsTransparency="True" WindowStyle="None">
 
     <Window.Background>
         <SolidColorBrush Opacity="0" Color="White"/>
     </Window.Background>
-    
-    <Grid Margin="10">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <Canvas Height="Auto" Width="Auto">
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-
-        <Slider x:Name="line_height_slider" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Width="400
-                " RenderTransformOrigin="0.5,0.5"  Cursor="None"
-                ValueChanged="line_height_slider_ValueChanged" >
-            <Slider.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="90"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Slider.RenderTransform>
+        <Slider x:Name="line_height_slider" 
+            Width="25" Height="1080" 
+            RenderTransformOrigin="0.5,0.5"  
+            Cursor="Arrow"
+            ValueChanged="line_height_slider_ValueChanged" 
+            Orientation="Vertical" >
         </Slider>
 
-        <Canvas Height="Auto" Width="Auto">
-            <Line
-                x:Name="horizon_guide"
-                X1="10" Y1="{Binding ElementName=line_height_slider, Path=Width}"
-                X2="1000" Y2="{Binding ElementName=line_height_slider, Path=Width}"
-                Stroke="White"
-                StrokeThickness="4" />
-        </Canvas>
-    </Grid>
+        <Line
+            x:Name="horizon_guide"
+            X1="0" Y1="{Binding ElementName=line_height_slider, Path=ActualHeight}"
+            X2="1920" Y2="{Binding ElementName=line_height_slider, Path=ActualHeight}"
+            Stroke="White"
+            StrokeThickness="4" />
+        
+    </Canvas>
 </Window>
