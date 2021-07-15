@@ -30,10 +30,16 @@ namespace Horizontal_Guide
         {
             // Get slider as reference
             Slider slider = sender as Slider;
+            match_line_to_slider(horizon_guide, slider);
+        }
+
+        private void match_line_to_slider(Line line, Slider slider)
+        {
+            // Get slider as reference
             Thumb thumb = get_thumb(slider);
 
             // If thumb cannot be retrieved, stop here
-            if(thumb == null)
+            if (thumb == null)
             {
                 return;
             }
@@ -45,12 +51,7 @@ namespace Horizontal_Guide
             double slider_height = slider.Height;
             double thumb_y = thumb_relative_location.Y;
             double thumb_height = thumb.ActualHeight / 2;
-            set_line_height(thumb_y + thumb_height);
-
-            // Set title
-            Point pointToWindow = Mouse.GetPosition(this);
-            Point pointToScreen = PointToScreen(pointToWindow);
-            Title = "slider_height = " + slider_height + ", thumb_y = " + Math.Round(thumb_y) + ", thumb_height = " + thumb_height;
+            set_line_height(thumb_y + thumb_height, line);
         }
 
         private static Thumb get_thumb(Slider slider)
@@ -67,11 +68,16 @@ namespace Horizontal_Guide
             return track == null ? null : track.Thumb;
         }
 
-        private void set_line_height(double new_height) 
+        private void set_line_height(double new_height, Line horizon) 
         {
-            var line = horizon_guide as Line;
-            line.Y1 = new_height;
-            line.Y2 = new_height;
+            horizon.Y1 = new_height;
+            horizon.Y2 = new_height;
+        }
+
+        private void horizon_guide_OnLoad(object sender, RoutedEventArgs e)
+        {
+            Line horizon = sender as Line;
+            match_line_to_slider(horizon, line_height_slider);
         }
     }
 }
