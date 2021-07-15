@@ -29,8 +29,8 @@ namespace Horizontal_Guide
         private void line_height_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             // Get slider as reference
-            Slider slider = sender as Slider;
-            match_line_to_slider(horizon_guide, slider);
+            Slider height_slider = sender as Slider;
+            match_line_to_slider(horizon_guide, height_slider);
         }
 
         private void match_line_to_slider(Line line, Slider slider)
@@ -76,8 +76,19 @@ namespace Horizontal_Guide
 
         private void horizon_guide_OnLoad(object sender, RoutedEventArgs e)
         {
+            // Adjust line's x-values so it covers the entire screen length-wise
             Line horizon = sender as Line;
+            horizon.X2 = FirstWindow.Width;
+
+            // Move line to where thumb currently is
             match_line_to_slider(horizon, line_height_slider);
+        }
+
+        private void line_height_slider_OnLoad(object sender, RoutedEventArgs e)
+        {
+            // Adjust slider's height so it covers the entire screen length-wise
+            Slider height_slider = sender as Slider;
+            height_slider.Height = FirstWindow.Height;
         }
     }
 }
