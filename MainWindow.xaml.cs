@@ -32,18 +32,22 @@ namespace Horizontal_Guide
             Slider slider = sender as Slider;
             Thumb thumb = get_thumb(slider);
 
+            // If thumb cannot be retrieved, stop here
+            if(thumb == null)
+            {
+                return;
+            }
+
             // Get position of thumb relative to slider
             Point thumb_relative_location = thumb.TranslatePoint(new Point(0, 0), slider);
 
             // Calculate and set line height to new value
-            //double value = slider.Value;
             double slider_height = slider.Height;
             double thumb_y = thumb_relative_location.Y;
             double thumb_height = thumb.ActualHeight / 2;
             set_line_height(thumb_y + thumb_height);
 
             // Set title
-            //Title = "Value: " + value.ToString("0.0") + "/" + slider.Maximum;
             Point pointToWindow = Mouse.GetPosition(this);
             Point pointToScreen = PointToScreen(pointToWindow);
             Title = "slider_height = " + slider_height + ", thumb_y = " + Math.Round(thumb_y) + ", thumb_height = " + thumb_height;
@@ -51,7 +55,15 @@ namespace Horizontal_Guide
 
         private static Thumb get_thumb(Slider slider)
         {
-            var track = slider.Template.FindName("PART_Track", slider) as Track;
+            var slider_template = slider.Template;
+
+            // Because changing the slider's initial value makes the template null for a split second at the beginning
+            if(slider_template == null)
+            {
+                return null;
+            }
+
+            var track = slider_template.FindName("PART_Track", slider) as Track;
             return track == null ? null : track.Thumb;
         }
 

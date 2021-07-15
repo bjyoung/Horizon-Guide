@@ -20,8 +20,7 @@
             RenderTransformOrigin="0.5,0.5"  
             Cursor="Arrow"
             ValueChanged="line_height_slider_ValueChanged" 
-            Orientation="Vertical" >
-        </Slider>
+            Orientation="Vertical" Value="5"/>
 
         <Line
             x:Name="horizon_guide"
@@ -29,6 +28,6 @@
             X2="1920" Y2="{Binding ElementName=line_height_slider, Path=ActualHeight}"
             Stroke="White"
             StrokeThickness="4" />
-        
+
     </Canvas>
 </Window>
