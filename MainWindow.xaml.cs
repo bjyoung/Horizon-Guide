@@ -90,5 +90,27 @@ namespace Horizontal_Guide
             Slider height_slider = sender as Slider;
             height_slider.Height = FirstWindow.Height;
         }
+
+        private void line_visibility_button_OnClick(object sender, RoutedEventArgs e)
+        {
+            Button visibility_button = sender as Button;
+
+            // Find out line's current visibility setting
+            Visibility line_visibility = horizon_guide.Visibility;
+
+            // If line if visible, then hide it
+            if(line_visibility == Visibility.Visible)
+            {
+                horizon_guide.Visibility = Visibility.Hidden;
+                visibility_button.Content = "Show";
+            }
+
+            if(line_visibility == Visibility.Hidden)
+            {
+                horizon_guide.Visibility = Visibility.Visible;
+                visibility_button.Content = "Hide";
+            }
+        }
+
     }
 }

@@ -31,6 +31,11 @@
             Stroke="White"
             StrokeThickness="4" 
             Loaded="horizon_guide_OnLoad"/>
+        
+        <Button x:Name="line_visibility_button" 
+                Content="Hide" 
+                Canvas.Right="30" Canvas.Top="25"
+                Click="line_visibility_button_OnClick"/>
 
     </Canvas>
 </Window>
