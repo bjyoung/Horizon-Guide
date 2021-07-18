@@ -34,8 +34,15 @@
         
         <Button x:Name="line_visibility_button" 
                 Content="Hide" 
-                Canvas.Right="30" Canvas.Top="25"
+                Width="50"
+                Height="25"
+                Canvas.Right="150" Canvas.Top="20"
                 Click="line_visibility_button_OnClick"/>
-
+        
+        <Button x:Name="line_color_button" 
+                Content="Change Color" 
+                Width="100" Height="25"
+                Canvas.Right="30" Canvas.Top="20"
+                Click="line_color_button_OnClick"/>
     </Canvas>
 </Window>

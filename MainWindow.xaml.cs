@@ -112,5 +112,9 @@ namespace Horizontal_Guide
             }
         }
 
+        private void line_color_button_OnClick(object sender, RoutedEventArgs e)
+        {
+            // Grab color picker
+        }
     }
 }
