@@ -14,6 +14,11 @@
         <SolidColorBrush Opacity="0" Color="White"/>
     </Window.Background>
 
+    <Window.Resources>
+        <Image x:Key="Show" Source="data/show_line_button_icon.png"/>
+        <Image x:Key="Hide" Source="data/hide_line_button_icon.png"/>
+    </Window.Resources>
+
     <Canvas Height="Auto" Width="Auto">
 
         <Slider x:Name="line_height_slider" 
@@ -31,14 +36,15 @@
             Stroke="White"
             StrokeThickness="4" 
             Loaded="horizon_guide_OnLoad"/>
-        
+
         <Button x:Name="line_visibility_button" 
-                Content="Hide" 
                 Width="50"
-                Height="25"
+                Height="50"
                 Canvas.Right="150" Canvas.Top="20"
-                Click="line_visibility_button_OnClick"/>
-        
+                Click="line_visibility_button_OnClick">
+            <DynamicResource ResourceKey="Show"/>
+        </Button>
+
         <Button x:Name="line_color_button" 
                 Content="Change Color" 
                 Width="100" Height="25"

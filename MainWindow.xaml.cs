@@ -102,13 +102,14 @@ namespace Horizontal_Guide
             if(line_visibility == Visibility.Visible)
             {
                 horizon_guide.Visibility = Visibility.Hidden;
-                visibility_button.Content = "Show";
+                visibility_button.Content = FindResource("Show");
+
             }
 
             if(line_visibility == Visibility.Hidden)
             {
                 horizon_guide.Visibility = Visibility.Visible;
-                visibility_button.Content = "Hide";
+                visibility_button.Content = FindResource("Hide");
             }
         }
 
