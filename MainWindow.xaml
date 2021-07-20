@@ -46,7 +46,7 @@
         </Button>
 
         <xctk:ColorPicker x:Name="LineColorPicker"
-                Width="50" Height="50"
+                Width="75" Height="50"
                 SelectedColorChanged="LineColorPicker_ColorChanged"
                 Canvas.Right="50" Canvas.Top="20" Cursor="Arrow"/>
 
