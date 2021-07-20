@@ -113,9 +113,9 @@ namespace Horizontal_Guide
             }
         }
 
-        private void line_color_button_OnClick(object sender, RoutedEventArgs e)
+        private void LineColorPicker_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
-            // Grab color picker
+            horizon_guide.Stroke = new SolidColorBrush(LineColorPicker.SelectedColor.Value);
         }
     }
 }

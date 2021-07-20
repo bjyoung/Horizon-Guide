@@ -28,7 +28,7 @@
             Cursor="Arrow"
             ValueChanged="line_height_slider_ValueChanged" 
             Orientation="Vertical" Value="5"
-            Loaded="line_height_slider_OnLoad"/>
+            Loaded="line_height_slider_OnLoad" Panel.ZIndex="1"/>
 
         <Line
             x:Name="horizon_guide"
@@ -47,8 +47,8 @@
 
         <xctk:ColorPicker x:Name="LineColorPicker"
                 Width="50" Height="50"
-                SelectedColorChanged="ClrPcker_Background_SelectedColorChanged"
-                Canvas.Right="50" Canvas.Top="20"/>
+                SelectedColorChanged="LineColorPicker_ColorChanged"
+                Canvas.Right="50" Canvas.Top="20" Cursor="Arrow"/>
 
     </Canvas>
 </Window>
