@@ -4,7 +4,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Horizontal_Guide"
+        xmlns:local="clr-namespace:Horizontal_Guide" 
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="Horizon Guide" Height="450" Width="800" 
         WindowState="Maximized" SizeToContent="Manual"
@@ -38,17 +39,16 @@
             Loaded="horizon_guide_OnLoad"/>
 
         <Button x:Name="line_visibility_button" 
-                Width="50"
-                Height="50"
+                Width="50" Height="50"
                 Canvas.Right="150" Canvas.Top="20"
                 Click="line_visibility_button_OnClick">
             <DynamicResource ResourceKey="Show"/>
         </Button>
 
-        <Button x:Name="line_color_button" 
-                Content="Change Color" 
-                Width="100" Height="25"
-                Canvas.Right="30" Canvas.Top="20"
-                Click="line_color_button_OnClick"/>
+        <xctk:ColorPicker x:Name="LineColorPicker"
+                Width="50" Height="50"
+                SelectedColorChanged="ClrPcker_Background_SelectedColorChanged"
+                Canvas.Right="50" Canvas.Top="20"/>
+
     </Canvas>
 </Window>
