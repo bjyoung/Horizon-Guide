@@ -18,6 +18,7 @@
     <Window.Resources>
         <Image x:Key="Show" Source="data/show_line_button_icon.png"/>
         <Image x:Key="Hide" Source="data/hide_line_button_icon.png"/>
+        <Image x:Key="Line_Thickness" Source="data/line_thickness_button_icon.png"/>
     </Window.Resources>
 
     <Canvas Height="Auto" Width="Auto">
@@ -40,7 +41,7 @@
 
         <Button x:Name="line_visibility_button" 
                 Width="50" Height="50"
-                Canvas.Right="150" Canvas.Top="20"
+                Canvas.Right="200" Canvas.Top="20"
                 Click="line_visibility_button_OnClick">
             <DynamicResource ResourceKey="Show"/>
         </Button>
@@ -48,7 +49,14 @@
         <xctk:ColorPicker x:Name="LineColorPicker"
                 Width="75" Height="50"
                 SelectedColorChanged="LineColorPicker_ColorChanged"
-                Canvas.Right="50" Canvas.Top="20" Cursor="Arrow"/>
+                Canvas.Right="100" Canvas.Top="20" Cursor="Arrow"/>
+
+        <Button x:Name="LineThicknessButton" 
+                Width="50" Height="50"
+                Canvas.Right="25" Canvas.Top="20"
+                Click="LineThicknessButton_OnClick">
+            <DynamicResource ResourceKey="Line_Thickness"/>
+        </Button>
 
     </Canvas>
 </Window>

@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <None Remove="data\hide_line_button_icon.png" />
+    <None Remove="data\line_thickness_button_icon.png" />
     <None Remove="data\show_line_button_icon.png" />
   </ItemGroup>
 
@@ -20,6 +21,7 @@
 
   <ItemGroup>
     <Resource Include="data\hide_line_button_icon.png" />
+    <Resource Include="data\line_thickness_button_icon.png" />
     <Resource Include="data\show_line_button_icon.png" />
   </ItemGroup>
 

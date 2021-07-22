@@ -117,5 +117,11 @@ namespace Horizontal_Guide
         {
             horizon_guide.Stroke = new SolidColorBrush(LineColorPicker.SelectedColor.Value);
         }
+
+        private void LineThicknessButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            // TODO Open number drop-down list and when value changes, update line thickness
+
+        }
     }
 }
