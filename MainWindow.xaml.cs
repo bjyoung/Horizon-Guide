@@ -48,7 +48,6 @@ namespace Horizontal_Guide
             Point thumb_relative_location = thumb.TranslatePoint(new Point(0, 0), slider);
 
             // Calculate and set line height to new value
-            double slider_height = slider.Height;
             double thumb_y = thumb_relative_location.Y;
             double thumb_height = thumb.ActualHeight / 2;
             set_line_height(thumb_y + thumb_height, line);
@@ -56,7 +55,7 @@ namespace Horizontal_Guide
 
         private static Thumb get_thumb(Slider slider)
         {
-            var slider_template = slider.Template;
+            ControlTemplate slider_template = slider.Template;
 
             // Because changing the slider's initial value makes the template null for a split second at the beginning
             if(slider_template == null)
@@ -121,7 +120,14 @@ namespace Horizontal_Guide
         private void LineThicknessButton_OnClick(object sender, RoutedEventArgs e)
         {
             // TODO Open number drop-down list and when value changes, update line thickness
+            Window1 line_thickness_window = new Window1();
+            line_thickness_window.ShowDialog();
+        }
 
+        public void UpdateLineThickness(int new_thickness)
+        {
+            // Update line's thickness using new value
+            horizon_guide.StrokeThickness = new_thickness;
         }
     }
 }

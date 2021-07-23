@@ -1,0 +1,35 @@
+﻿<Window x:Class="Horizontal_Guide.Window1"
+        x:Name="LineThicknessWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Horizontal_Guide"
+        mc:Ignorable="d"
+        Title="Line Thickness" 
+        Height="110" Width="200"
+        ResizeMode="NoResize">
+    <Grid>
+        <ComboBox x:Name="LineThicknessComboBox" 
+                  HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" 
+                  Width="100"
+                  SelectionChanged="LineThicknessCombo_SelectionChanged">
+            <ComboBoxItem Content="2"></ComboBoxItem>
+            <ComboBoxItem Content="4"></ComboBoxItem>
+            <ComboBoxItem Content="6"></ComboBoxItem>
+            <ComboBoxItem Content="8"></ComboBoxItem>
+            <ComboBoxItem Content="10"></ComboBoxItem>
+            <ComboBoxItem Content="12"></ComboBoxItem>
+            <ComboBoxItem Content="14"></ComboBoxItem>
+            <ComboBoxItem Content="16"></ComboBoxItem>
+            <ComboBoxItem Content="20"></ComboBoxItem>
+        </ComboBox>
+
+        <Button x:Name="OKButton" 
+                Content="OK" 
+                HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Bottom"
+                Width="50"
+                Click="OKButton_OnClick"/>
+
+    </Grid>
+</Window>
