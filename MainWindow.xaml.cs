@@ -28,30 +28,10 @@ namespace Horizontal_Guide
 
         private void line_height_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get slider as reference
-            Slider height_slider = sender as Slider;
-            match_line_to_slider(horizon_guide, height_slider);
+            double thumb_height = calculate_thumb_height(line_height_slider, e.NewValue);
+            set_line_height(thumb_height, horizon_guide);
         }
 
-        private void match_line_to_slider(Line line, Slider slider)
-        {
-            // Get slider as reference
-            Thumb thumb = get_thumb(slider);
-
-            // If thumb cannot be retrieved, stop here
-            if (thumb == null)
-            {
-                return;
-            }
-
-            // Get position of thumb relative to slider
-            Point thumb_relative_location = thumb.TranslatePoint(new Point(0, 0), slider);
-
-            // Calculate and set line height to new value
-            double thumb_y = thumb_relative_location.Y;
-            double thumb_height = thumb.ActualHeight / 2;
-            set_line_height(thumb_y + thumb_height, line);
-        }
 
         private static Thumb get_thumb(Slider slider)
         {
@@ -67,8 +47,35 @@ namespace Horizontal_Guide
             return track == null ? null : track.Thumb;
         }
 
+        private static double calculate_thumb_height(Slider slider, double value)
+        {
+            // Calculate actual thumb height based on the given thumb value
+            // Get half of thumb height
+            Thumb thumb = get_thumb(slider);
+            double thumb_height = 0.0;
+
+            if (thumb != null)
+            {
+                thumb_height = thumb.Height / 2;
+            }
+
+            // Find ratio of thumb y-position to slider height
+            double thumb_ratio = (value * 1.0) / (slider.Maximum - slider.Minimum);
+
+            // Multiply thumb ratio by slider height
+            double thumb_relative_y = slider.Height * thumb_ratio;
+            double thumb_actual_y = slider.Height - thumb_relative_y + thumb_height;
+
+            return thumb_actual_y;
+        }
+
         private void set_line_height(double new_height, Line horizon) 
         {
+            if(horizon == null)
+            {
+                return;
+            }
+
             horizon.Y1 = new_height;
             horizon.Y2 = new_height;
         }
@@ -78,9 +85,12 @@ namespace Horizontal_Guide
             // Adjust line's x-values so it covers the entire screen length-wise
             Line horizon = sender as Line;
             horizon.X2 = FirstWindow.Width;
-
-            // Move line to where thumb currently is
-            match_line_to_slider(horizon, line_height_slider);
+            
+            if(line_height_slider != null)
+            {
+                double thumb_height = calculate_thumb_height(line_height_slider, line_height_slider.Value);
+                set_line_height(thumb_height, horizon_guide);
+            }
         }
 
         private void line_height_slider_OnLoad(object sender, RoutedEventArgs e)

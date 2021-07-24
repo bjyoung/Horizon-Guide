@@ -14,7 +14,7 @@
     <Window.Background>
         <SolidColorBrush Opacity="0" Color="White"/>
     </Window.Background>
-
+    
     <Window.Resources>
         <Image x:Key="Show" Source="data/show_line_button_icon.png"/>
         <Image x:Key="Hide" Source="data/hide_line_button_icon.png"/>
@@ -24,7 +24,7 @@
     <Canvas Height="Auto" Width="Auto">
 
         <Slider x:Name="line_height_slider" 
-            Width="25" Height="1080" 
+            Width="25" Height="500" 
             RenderTransformOrigin="0.5,0.5"  
             Cursor="Arrow"
             ValueChanged="line_height_slider_ValueChanged" 
