@@ -9,7 +9,8 @@
         mc:Ignorable="d"
         Title="Horizon Guide" Height="450" Width="800" 
         WindowState="Maximized" SizeToContent="Manual"
-        AllowsTransparency="True" WindowStyle="None">
+        AllowsTransparency="True" WindowStyle="None"
+        ContentRendered="FirstWindow_ContentRendered">
 
     <Window.Background>
         <SolidColorBrush Opacity="0" Color="White"/>

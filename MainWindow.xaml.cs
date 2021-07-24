@@ -47,24 +47,32 @@ namespace Horizontal_Guide
             return track == null ? null : track.Thumb;
         }
 
-        private static double calculate_thumb_height(Slider slider, double value)
+        private double calculate_thumb_height(Slider slider, double value)
         {
             // Calculate actual thumb height based on the given thumb value
             // Get half of thumb height
             Thumb thumb = get_thumb(slider);
-            double thumb_height = 0.0;
+            double thumb_center_height = 0.0;
 
             if (thumb != null)
             {
-                thumb_height = thumb.Height / 2;
+                thumb_center_height = thumb.ActualHeight / 2;
             }
 
             // Find ratio of thumb y-position to slider height
-            double thumb_ratio = (value * 1.0) / (slider.Maximum - slider.Minimum);
+            double slider_range = slider.Maximum - slider.Minimum;
+            double thumb_ratio = (value * 1.0) / slider_range;
+            double thumb_center_height_ratio = thumb_center_height * thumb_ratio;
 
             // Multiply thumb ratio by slider height
-            double thumb_relative_y = slider.Height * thumb_ratio;
-            double thumb_actual_y = slider.Height - thumb_relative_y + thumb_height;
+            double slider_real_height = slider.ActualHeight - 5.5;
+            double thumb_relative_y = slider_real_height * thumb_ratio;
+            double thumb_actual_y = slider_real_height - thumb_relative_y + thumb_center_height_ratio;
+
+
+
+            // For testing
+            // Title = "slider.Height = " + Math.Round(slider.Height, 4) + "; thumb_relative_y = " + Math.Round(thumb_relative_y, 2) + "; thumb_center_height = " + Math.Round(thumb_center_height, 4);
 
             return thumb_actual_y;
         }
@@ -78,6 +86,9 @@ namespace Horizontal_Guide
 
             horizon.Y1 = new_height;
             horizon.Y2 = new_height;
+
+            // For testing
+            Title = "line_height = " + new_height;
         }
 
         private void horizon_guide_OnLoad(object sender, RoutedEventArgs e)
@@ -85,12 +96,6 @@ namespace Horizontal_Guide
             // Adjust line's x-values so it covers the entire screen length-wise
             Line horizon = sender as Line;
             horizon.X2 = FirstWindow.Width;
-            
-            if(line_height_slider != null)
-            {
-                double thumb_height = calculate_thumb_height(line_height_slider, line_height_slider.Value);
-                set_line_height(thumb_height, horizon_guide);
-            }
         }
 
         private void line_height_slider_OnLoad(object sender, RoutedEventArgs e)
@@ -138,6 +143,15 @@ namespace Horizontal_Guide
         {
             // Update line's thickness using new value
             horizon_guide.StrokeThickness = new_thickness;
+        }
+
+        private void FirstWindow_ContentRendered(object sender, EventArgs e)
+        {
+            if (line_height_slider != null)
+            {
+                double thumb_height = calculate_thumb_height(line_height_slider, line_height_slider.Value);
+                set_line_height(thumb_height, horizon_guide);
+            }
         }
     }
 }
