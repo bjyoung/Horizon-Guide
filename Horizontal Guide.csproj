@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.1.0" />
+    <PackageReference Include="WiX" Version="3.11.2" />
   </ItemGroup>
 
   <ItemGroup>

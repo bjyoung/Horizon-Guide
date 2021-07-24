@@ -24,26 +24,26 @@
 
     <Canvas Height="Auto" Width="Auto">
 
-        <Slider x:Name="line_height_slider" 
+        <Slider x:Name="LineHeightSlider" 
             Width="25" Height="500" 
             RenderTransformOrigin="0.5,0.5"  
             Cursor="Arrow"
-            ValueChanged="line_height_slider_ValueChanged" 
+            ValueChanged="LineHeightSlider_ValueChanged" 
             Orientation="Vertical" Value="5"
-            Loaded="line_height_slider_OnLoad" Panel.ZIndex="1"/>
+            Loaded="LineHeightSlider_OnLoad" Panel.ZIndex="1"/>
 
         <Line
-            x:Name="horizon_guide"
+            x:Name="HorizonGuide"
             X1="0" Y1="{Binding ElementName=line_height_slider, Path=ActualHeight}"
             X2="1920" Y2="{Binding ElementName=line_height_slider, Path=ActualHeight}"
-            Stroke="White"
+            Stroke="DarkOrange"
             StrokeThickness="4" 
-            Loaded="horizon_guide_OnLoad"/>
+            Loaded="HorizonGuide_OnLoad"/>
 
-        <Button x:Name="line_visibility_button" 
+        <Button x:Name="LineVisibilityButton" 
                 Width="50" Height="50"
                 Canvas.Right="200" Canvas.Top="20"
-                Click="line_visibility_button_OnClick">
+                Click="LineVisibilityButton_OnClick">
             <DynamicResource ResourceKey="Show"/>
         </Button>
 

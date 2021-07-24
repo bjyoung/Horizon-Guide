@@ -24,12 +24,6 @@ namespace Horizontal_Guide
             InitializeComponent();
         }
 
-        private void CancelButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            // Close current window when clicked
-            Close();
-        }
-
         private void OKButton_OnClick(object sender, RoutedEventArgs e)
         {
             // Close current window when clicked and send value back to original window
@@ -40,7 +34,7 @@ namespace Horizontal_Guide
         {
             // If user selects a new value from the list, update the line thickness in main
             ComboBoxItem combo_box_item = ((sender as ComboBox).SelectedItem as ComboBoxItem);
-            String selected_text = combo_box_item.Content.ToString();
+            string selected_text = combo_box_item.Content.ToString();
 
             if (selected_text != "")
             {

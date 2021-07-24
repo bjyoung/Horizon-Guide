@@ -26,10 +26,10 @@ namespace Horizontal_Guide
             InitializeComponent();
         }
 
-        private void line_height_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void LineHeightSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            double thumb_height = calculate_thumb_height(line_height_slider, e.NewValue);
-            set_line_height(thumb_height, horizon_guide);
+            double thumb_height = calculate_thumb_height(LineHeightSlider, e.NewValue);
+            set_line_height(thumb_height, HorizonGuide);
         }
 
 
@@ -91,45 +91,45 @@ namespace Horizontal_Guide
             Title = "line_height = " + new_height;
         }
 
-        private void horizon_guide_OnLoad(object sender, RoutedEventArgs e)
+        private void HorizonGuide_OnLoad(object sender, RoutedEventArgs e)
         {
             // Adjust line's x-values so it covers the entire screen length-wise
             Line horizon = sender as Line;
             horizon.X2 = FirstWindow.Width;
         }
 
-        private void line_height_slider_OnLoad(object sender, RoutedEventArgs e)
+        private void LineHeightSlider_OnLoad(object sender, RoutedEventArgs e)
         {
             // Adjust slider's height so it covers the entire screen length-wise
             Slider height_slider = sender as Slider;
             height_slider.Height = FirstWindow.Height;
         }
 
-        private void line_visibility_button_OnClick(object sender, RoutedEventArgs e)
+        private void LineVisibilityButton_OnClick(object sender, RoutedEventArgs e)
         {
             Button visibility_button = sender as Button;
 
             // Find out line's current visibility setting
-            Visibility line_visibility = horizon_guide.Visibility;
+            Visibility line_visibility = HorizonGuide.Visibility;
 
             // If line if visible, then hide it
             if(line_visibility == Visibility.Visible)
             {
-                horizon_guide.Visibility = Visibility.Hidden;
+                HorizonGuide.Visibility = Visibility.Hidden;
                 visibility_button.Content = FindResource("Show");
 
             }
 
             if(line_visibility == Visibility.Hidden)
             {
-                horizon_guide.Visibility = Visibility.Visible;
+                HorizonGuide.Visibility = Visibility.Visible;
                 visibility_button.Content = FindResource("Hide");
             }
         }
 
         private void LineColorPicker_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
-            horizon_guide.Stroke = new SolidColorBrush(LineColorPicker.SelectedColor.Value);
+            HorizonGuide.Stroke = new SolidColorBrush(LineColorPicker.SelectedColor.Value);
         }
 
         private void LineThicknessButton_OnClick(object sender, RoutedEventArgs e)
@@ -142,15 +142,15 @@ namespace Horizontal_Guide
         public void UpdateLineThickness(int new_thickness)
         {
             // Update line's thickness using new value
-            horizon_guide.StrokeThickness = new_thickness;
+            HorizonGuide.StrokeThickness = new_thickness;
         }
 
         private void FirstWindow_ContentRendered(object sender, EventArgs e)
         {
-            if (line_height_slider != null)
+            if (LineHeightSlider != null)
             {
-                double thumb_height = calculate_thumb_height(line_height_slider, line_height_slider.Value);
-                set_line_height(thumb_height, horizon_guide);
+                double thumb_height = calculate_thumb_height(LineHeightSlider, LineHeightSlider.Value);
+                set_line_height(thumb_height, HorizonGuide);
             }
         }
     }
