@@ -39,7 +39,8 @@ namespace Horizontal_Guide
         private void LineThicknessCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // If user selects a new value from the list, update the line thickness in main
-            string selected_text = LineThicknessComboBox.Text;
+            ComboBoxItem combo_box_item = ((sender as ComboBox).SelectedItem as ComboBoxItem);
+            String selected_text = combo_box_item.Content.ToString();
 
             if (selected_text != "")
             {
