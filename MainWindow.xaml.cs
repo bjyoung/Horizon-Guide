@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 
@@ -21,6 +13,8 @@ namespace Horizontal_Guide
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Window thickness_window = null; // To keep track of a reference to line thickness sub-window
+
         public MainWindow()
         {
             InitializeComponent();
@@ -88,7 +82,7 @@ namespace Horizontal_Guide
             horizon.Y2 = new_height;
 
             // For testing
-            Title = "line_height = " + new_height;
+            // Title = "line_height = " + new_height;
         }
 
         private void HorizonGuide_OnLoad(object sender, RoutedEventArgs e)
@@ -134,9 +128,10 @@ namespace Horizontal_Guide
 
         private void LineThicknessButton_OnClick(object sender, RoutedEventArgs e)
         {
-            // TODO Open number drop-down list and when value changes, update line thickness
+            // Open number drop-down list and when value changes, update line thickness
             Window1 line_thickness_window = new Window1();
-            line_thickness_window.ShowDialog();
+            thickness_window = line_thickness_window;
+            line_thickness_window.Show();
         }
 
         public void UpdateLineThickness(int new_thickness)
@@ -151,6 +146,15 @@ namespace Horizontal_Guide
             {
                 double thumb_height = calculate_thumb_height(LineHeightSlider, LineHeightSlider.Value);
                 set_line_height(thumb_height, HorizonGuide);
+            }
+        }
+
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // Check if line thickness sub-window is open
+            if(thickness_window != null)
+            {
+                thickness_window.Close();
             }
         }
     }

@@ -39,7 +39,16 @@ namespace Horizontal_Guide
             if (selected_text != "")
             {
                 int new_line_thickness = int.Parse(selected_text);
-                ((MainWindow)Application.Current.MainWindow).UpdateLineThickness(new_line_thickness);
+
+                try
+                {
+                    ((MainWindow)Application.Current.MainWindow).UpdateLineThickness(new_line_thickness);
+
+                }
+                catch (Exception ex)
+                {
+                    // Do nothing, just to catch exception in case main window closes
+                }
             }
         }
     }

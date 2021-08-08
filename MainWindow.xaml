@@ -10,7 +10,8 @@
         Title="Horizon Guide" Height="450" Width="800" 
         WindowState="Maximized" SizeToContent="Manual"
         AllowsTransparency="True" WindowStyle="None"
-        ContentRendered="FirstWindow_ContentRendered">
+        ContentRendered="FirstWindow_ContentRendered"
+        Closing="MainWindow_Closing">
 
     <Window.Background>
         <SolidColorBrush Opacity="0" Color="White"/>
@@ -44,7 +45,7 @@
                 Width="50" Height="50"
                 Canvas.Right="200" Canvas.Top="20"
                 Click="LineVisibilityButton_OnClick">
-            <DynamicResource ResourceKey="Show"/>
+            <DynamicResource ResourceKey="Hide"/>
         </Button>
 
         <xctk:ColorPicker x:Name="LineColorPicker"
