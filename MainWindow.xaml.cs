@@ -14,6 +14,7 @@ namespace Horizontal_Guide
     public partial class MainWindow : Window
     {
         private Window thickness_window = null; // To keep track of a reference to line thickness sub-window
+        private Window information_window = null; // To keep track of reference to information sub-window
 
         public MainWindow()
         {
@@ -140,6 +141,14 @@ namespace Horizontal_Guide
             HorizonGuide.StrokeThickness = new_thickness;
         }
 
+        private void InformationButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            // Open information window
+            InformationWindow info_window_temp = new InformationWindow();
+            information_window = info_window_temp;
+            info_window_temp.Show();
+        }
+
         private void FirstWindow_ContentRendered(object sender, EventArgs e)
         {
             if (LineHeightSlider != null)
@@ -155,6 +164,11 @@ namespace Horizontal_Guide
             if(thickness_window != null)
             {
                 thickness_window.Close();
+            }
+
+            if(information_window != null)
+            {
+                information_window.Close();
             }
         }
     }
