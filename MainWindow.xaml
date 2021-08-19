@@ -19,7 +19,7 @@
     
     <Window.Resources>
         <Image x:Key="Show" Source="data/show_line_button_icon.png"/>
-        <Image x:Key="Hide" Source="data/hide_line_button_icon.png"/>
+        <Image x:Key="Hide" Source="data/hide_line_button_icon.png" Visibility="Visible"/>
         <Image x:Key="Line_Thickness" Source="data/line_thickness_button_icon.png"/>
         <Image x:Key="Information" Source="data/information_button_icon.png"/>
     </Window.Resources>
