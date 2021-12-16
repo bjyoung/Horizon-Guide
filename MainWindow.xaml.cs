@@ -64,11 +64,6 @@ namespace Horizontal_Guide
             double thumb_relative_y = slider_real_height * thumb_ratio;
             double thumb_actual_y = slider_real_height - thumb_relative_y + thumb_center_height_ratio;
 
-
-
-            // For testing
-            // Title = "slider.Height = " + Math.Round(slider.Height, 4) + "; thumb_relative_y = " + Math.Round(thumb_relative_y, 2) + "; thumb_center_height = " + Math.Round(thumb_center_height, 4);
-
             return thumb_actual_y;
         }
 
@@ -81,9 +76,6 @@ namespace Horizontal_Guide
 
             horizon.Y1 = new_height;
             horizon.Y2 = new_height;
-
-            // For testing
-            // Title = "line_height = " + new_height;
         }
 
         private void HorizonGuide_OnLoad(object sender, RoutedEventArgs e)
