@@ -153,6 +153,20 @@ namespace Horizontal_Guide
 
         private void InformationButton_OnClick(object sender, RoutedEventArgs e)
         {
+            // TODO InformationButton_OnClick and LineThicknessButton_OnClick are really similar and could be simplified
+            // If information window window is already closed, then set its tracker variable to null
+            if (isClosed(information_window))
+            {
+                information_window = null;
+            }
+
+            // If line thickness window was created already, make it active instead of creating a window
+            if (information_window != null)
+            {
+                information_window.Activate();
+                return;
+            }
+
             // Open information window
             InformationWindow info_window_temp = new InformationWindow();
             information_window = info_window_temp;
