@@ -121,10 +121,28 @@ namespace Horizontal_Guide
 
         private void LineThicknessButton_OnClick(object sender, RoutedEventArgs e)
         {
+            // If line thickness window is already closed, then set its tracker variable to null
+            if(isClosed(thickness_window))
+            {
+                thickness_window = null;
+            }
+
+            // If line thickness window was created already, make it active instead of creating a window
+            if(thickness_window != null)
+            {
+                thickness_window.Activate();
+                return;
+            }
+
             // Open number drop-down list and when value changes, update line thickness
             Window1 line_thickness_window = new Window1();
             thickness_window = line_thickness_window;
             line_thickness_window.Show();
+        }
+
+        // Check if window is closed or not
+        private bool isClosed(Window window) {
+            return (window != null && window.IsLoaded == true) ? false : true;
         }
 
         public void UpdateLineThickness(int new_thickness)
