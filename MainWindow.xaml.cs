@@ -122,7 +122,7 @@ namespace Horizontal_Guide
         private void LineThicknessButton_OnClick(object sender, RoutedEventArgs e)
         {
             // If line thickness window is already closed, then set its tracker variable to null
-            if(isClosed(thickness_window))
+            if(IsClosed(thickness_window))
             {
                 thickness_window = null;
             }
@@ -141,7 +141,7 @@ namespace Horizontal_Guide
         }
 
         // Check if window is closed or not
-        private bool isClosed(Window window) {
+        private static bool IsClosed(Window window) {
             return window == null || window.IsLoaded != true;
         }
 
@@ -155,7 +155,7 @@ namespace Horizontal_Guide
         {
             // TODO InformationButton_OnClick and LineThicknessButton_OnClick are really similar and could be simplified
             // If information window window is already closed, then set its tracker variable to null
-            if (isClosed(information_window))
+            if (IsClosed(information_window))
             {
                 information_window = null;
             }
