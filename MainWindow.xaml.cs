@@ -142,7 +142,7 @@ namespace Horizontal_Guide
 
         // Check if window is closed or not
         private bool isClosed(Window window) {
-            return (window != null && window.IsLoaded == true) ? false : true;
+            return window == null || window.IsLoaded != true;
         }
 
         public void UpdateLineThickness(int new_thickness)
