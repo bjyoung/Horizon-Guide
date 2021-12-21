@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 
 namespace Horizontal_Guide
 {
@@ -182,6 +183,13 @@ namespace Horizontal_Guide
             }
         }
 
+        private void Window_KeyDown(object sender, KeyEventArgs e) 
+        {
+            if (e.KeyboardDevice.Modifiers == ModifierKeys.Control) {
+               
+            }
+        }
+
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             // Check if line thickness sub-window is open
@@ -195,5 +203,32 @@ namespace Horizontal_Guide
                 information_window.Close();
             }
         }
+
+        // Only close if main window is active
+        private void CloseCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = this.IsActive;
+        }
+
+        // Close window when close command is executed
+        private void CloseCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.Close();
+        }
+    }
+
+    // Custom commands for Main Window
+    public static class CustomCommands
+    {
+        // Command closes window when triggered
+        public static readonly RoutedCommand Close = new RoutedCommand
+            (
+                "Close",
+                typeof(CustomCommands),
+                new InputGestureCollection()
+                {
+                    new KeyGesture(Key.W, ModifierKeys.Control)
+                }
+            );
     }
 }

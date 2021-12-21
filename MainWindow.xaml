@@ -4,8 +4,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Horizontal_Guide" 
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:main="clr-namespace:Horizontal_Guide"
         mc:Ignorable="d"
         Title="Horizon Guide" Height="450" Width="800" 
         WindowState="Maximized" SizeToContent="Manual"
@@ -16,13 +16,17 @@
     <Window.Background>
         <SolidColorBrush Opacity="0" Color="White"/>
     </Window.Background>
-    
+
     <Window.Resources>
         <Image x:Key="Show" Source="data/show_line_button_icon.png"/>
         <Image x:Key="Hide" Source="data/hide_line_button_icon.png" Visibility="Visible"/>
         <Image x:Key="Line_Thickness" Source="data/line_thickness_button_icon.png"/>
         <Image x:Key="Information" Source="data/information_button_icon.png"/>
     </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="main:CustomCommands.Close" Executed="CloseCommand_Executed" CanExecute="CloseCommand_CanExecute" />
+    </Window.CommandBindings>
 
     <Canvas Height="Auto" Width="Auto">
 
