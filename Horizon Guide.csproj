@@ -24,6 +24,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Commands\**" />
+    <EmbeddedResource Remove="Commands\**" />
+    <None Remove="Commands\**" />
+    <Page Remove="Commands\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="data\hide_line_button_icon.png" />
     <None Remove="data\information_button_icon.png" />
     <None Remove="data\line_thickness_button_icon.png" />
@@ -43,10 +50,6 @@
     <Resource Include="data\information_button_icon.png" />
     <Resource Include="data\line_thickness_button_icon.png" />
     <Resource Include="data\show_line_button_icon.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Commands\" />
   </ItemGroup>
 
 </Project>

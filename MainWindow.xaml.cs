@@ -204,19 +204,4 @@ namespace Horizontal_Guide
             }
         }
     }
-
-    // Custom commands for Main Window
-    public static class CustomCommands
-    {
-        // Command closes window when triggered
-        public static readonly RoutedCommand Close = new RoutedCommand
-            (
-                "Close",
-                typeof(CustomCommands),
-                new InputGestureCollection()
-                {
-                    new KeyGesture(Key.W, ModifierKeys.Control)
-                }
-            );
-    }
 }
