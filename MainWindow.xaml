@@ -1,4 +1,4 @@
-﻿<Window x:Class="Horizontal_Guide.MainWindow"
+﻿<local:CloseableWindow x:Class="Horizontal_Guide.MainWindow"
         x:Name="FirstWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -73,4 +73,4 @@
             <DynamicResource ResourceKey="Information"/>
         </Button>
     </Canvas>
-</Window>
+</local:CloseableWindow>

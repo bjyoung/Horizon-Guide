@@ -12,7 +12,7 @@ namespace Horizontal_Guide
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : CloseableWindow
     {
         private Window thickness_window = null; // To keep track of a reference to line thickness sub-window
         private Window information_window = null; // To keep track of reference to information sub-window
@@ -202,18 +202,6 @@ namespace Horizontal_Guide
             {
                 information_window.Close();
             }
-        }
-
-        // Only close if main window is active
-        private void CloseCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = this.IsActive;
-        }
-
-        // Close window when close command is executed
-        private void CloseCommand_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 
