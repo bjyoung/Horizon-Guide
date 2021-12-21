@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         Title="Information" Height="300" Width="500"
         ResizeMode="NoResize">
-
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="local:CustomCommands.Close" Executed="CloseCommand_Executed" CanExecute="CloseCommand_CanExecute" />
+    </Window.CommandBindings>
+    
     <Grid ShowGridLines="False">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>

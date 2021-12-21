@@ -4,10 +4,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Horizontal_Guide"
         mc:Ignorable="d"
         Title="Line Thickness" 
         Height="110" Width="200"
         ResizeMode="NoResize">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="local:CustomCommands.Close" Executed="CloseCommand_Executed" CanExecute="CloseCommand_CanExecute" />
+    </Window.CommandBindings>
+    
     <Grid>
         <ComboBox x:Name="LineThicknessComboBox" 
                   HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" 

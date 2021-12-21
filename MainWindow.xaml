@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        xmlns:main="clr-namespace:Horizontal_Guide"
+        xmlns:local="clr-namespace:Horizontal_Guide"
         mc:Ignorable="d"
         Title="Horizon Guide" Height="450" Width="800" 
         WindowState="Maximized" SizeToContent="Manual"
@@ -25,7 +25,7 @@
     </Window.Resources>
 
     <Window.CommandBindings>
-        <CommandBinding Command="main:CustomCommands.Close" Executed="CloseCommand_Executed" CanExecute="CloseCommand_CanExecute" />
+        <CommandBinding Command="local:CustomCommands.Close" Executed="CloseCommand_Executed" CanExecute="CloseCommand_CanExecute" />
     </Window.CommandBindings>
 
     <Canvas Height="Auto" Width="Auto">
