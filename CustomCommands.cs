@@ -2,7 +2,7 @@
 
 namespace Horizontal_Guide
 {
-    // Custom commands for Horizon Guide
+    // A collection of custom commands for Horizon Guide
     public static class CustomCommands
     {
         // Command closes window when triggered

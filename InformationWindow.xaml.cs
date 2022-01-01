@@ -1,10 +1,9 @@
 ﻿namespace Horizontal_Guide
 {
-    /// <summary>
-    /// Interaction logic for InformationWindow.xaml
-    /// </summary>
+    // Sub-window displaying general application information
     public partial class InformationWindow : CloseableWindow
     {
+        // Constructor
         public InformationWindow()
         {
             InitializeComponent();

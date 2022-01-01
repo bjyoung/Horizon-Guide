@@ -3,9 +3,10 @@ using System.Windows.Input;
 
 namespace Horizontal_Guide
 {
+    // Window that can be closed using CTRL + W shortcut
     public partial class CloseableWindow : Window
     {
-        // Only close if main window is active
+        // Only close if window is active
         public void CloseCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = this.IsActive;

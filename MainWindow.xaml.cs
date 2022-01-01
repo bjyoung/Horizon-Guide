@@ -8,19 +8,22 @@ using System.Windows.Input;
 
 namespace Horizontal_Guide
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    // Initial window with the adjustable line and UI buttons
     public partial class MainWindow : CloseableWindow
     {
-        private Window thickness_window = null; // To keep track of a reference to line thickness sub-window
-        private Window information_window = null; // To keep track of reference to information sub-window
+        // To keep track of a reference to line thickness sub-window
+        private Window thickness_window = null;
 
+        // To keep track of reference to information sub-window
+        private Window information_window = null; 
+
+        // Constructor
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        // When line thumb is moved, move line to match it's ehight
         private void LineHeightSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             double thumb_height = calculate_thumb_height(LineHeightSlider, e.NewValue);

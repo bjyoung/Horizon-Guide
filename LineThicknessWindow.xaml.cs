@@ -4,22 +4,24 @@ using System.Windows.Controls;
 
 namespace Horizontal_Guide
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
+    // Sub-window displaying line-thickness
+    // TODO change Window1 to LineThicknessWindow
     public partial class Window1 : CloseableWindow
     {
+        // Constructor
         public Window1()
         {
             InitializeComponent();
         }
 
+        // Close window when 'OK' button is clicked
         private void OKButton_OnClick(object sender, RoutedEventArgs e)
         {
             // Close current window when clicked and send value back to original window
             Close();
         }
 
+        // Adjust line thickness as dropdown list value is changed
         private void LineThicknessCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // If user selects a new value from the list, update the line thickness in main
