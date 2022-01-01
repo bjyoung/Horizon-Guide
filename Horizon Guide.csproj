@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
     <RootNamespace>Horizontal_Guide</RootNamespace>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>horizon_guide_icon.ico</ApplicationIcon>
@@ -12,6 +12,11 @@
     <PackageIcon>horizon_guide_icon.png</PackageIcon>
     <PackageIconUrl />
     <SignAssembly>false</SignAssembly>
+    <Nullable>disable</Nullable>
+    <RepositoryUrl>https://github.com/bjyoung/Horizon-Guide</RepositoryUrl>
+    <PackageProjectUrl>https://www.brandonjamesyoung.com/HorizonGuide</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <Version>$(VersionPrefix)</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
