@@ -43,6 +43,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -187,16 +203,16 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Horizon Guide"
-        "ProductCode" = "8:{C55114B5-6128-4827-8A57-73353D9B884A}"
-        "PackageCode" = "8:{BE7C2DD9-DC1A-41CA-8471-B867A3FDBE2F}"
+        "ProductCode" = "8:{FFA90138-C5DE-40EE-BC7A-32015920B1F7}"
+        "PackageCode" = "8:{58FFF766-1F82-45CC-A49E-B203FB8333F0}"
         "UpgradeCode" = "8:{60A3F480-8BEF-4D3D-BB86-E8B00EBFBB58}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "ProductVersion" = "8:1.0.8"
+        "Manufacturer" = "8:Brandon Young"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:HorizonGuideSetup"
@@ -709,7 +725,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3BE4D85720FC440FA996E0538DC5FEEE"
             {
-            "SourcePath" = "8:..\\obj\\Release\\net5.0-windows10.0.19041.0\\apphost.exe"
+            "SourcePath" = "8:..\\obj\\Debug\\net5.0-windows10.0.19041.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_35E3655F0364459DBE98253386FCBD90"
