@@ -725,7 +725,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3BE4D85720FC440FA996E0538DC5FEEE"
             {
-            "SourcePath" = "8:..\\obj\\Debug\\net5.0-windows10.0.19041.0\\apphost.exe"
+            "SourcePath" = "8:..\\obj\\Debug\\net6.0-windows8.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_35E3655F0364459DBE98253386FCBD90"
@@ -749,6 +749,7 @@
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
+                "ExcludeFilter" = "8:Xceed.Wpf.AvalonDock.*"
                 }
             }
         }
