@@ -41,6 +41,7 @@
     <None Remove="data\line_thickness_button_icon.png" />
     <None Remove="data\show_line_button_icon.png" />
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.2.0" />
+    <PackageReference Include="WpfScreenHelper" Version="2.0.0" />
     <Resource Include="data\horizon_guide_icon.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
