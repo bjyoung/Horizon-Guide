@@ -5,6 +5,8 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using WpfScreenHelper;
+using System.Collections.Generic;
 
 namespace Horizontal_Guide
 {
@@ -21,6 +23,47 @@ namespace Horizontal_Guide
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void MainWindow_OnLoad(object sender, RoutedEventArgs e) {
+            Screen secondary_screen = get_secondary_screen();
+
+            if (secondary_screen == null)
+            {
+                return;
+            }
+
+            FirstWindow.Top = secondary_screen.WorkingArea.Top;
+            FirstWindow.Left = secondary_screen.WorkingArea.Left;
+            FirstWindow.Width = secondary_screen.WorkingArea.Width;
+            FirstWindow.Height = secondary_screen.WorkingArea.Height;
+            FirstWindow.WindowState = WindowState.Maximized;
+        }
+
+        // TODO make this work for any number of screens
+        // Get secondary screen
+        // Assumes that there are at most two screens
+        private Screen get_secondary_screen()
+        {
+            IEnumerable<Screen> screen_list = Screen.AllScreens;
+            Screen primary_screen = Screen.PrimaryScreen;
+            Screen secondary_screen = null;
+
+            foreach (Screen screen in screen_list)
+            {
+                if (screen.DeviceName != primary_screen.DeviceName)
+                {
+                    secondary_screen = screen;
+                    break;
+                }
+            }
+
+            if (secondary_screen == null)
+            {
+                Console.WriteLine("No secondary screen found");
+            }
+
+            return secondary_screen;
         }
 
         // When line thumb is moved, move line to match it's ehight
@@ -93,6 +136,12 @@ namespace Horizontal_Guide
             // Adjust slider's height so it covers the entire screen length-wise
             Slider height_slider = sender as Slider;
             height_slider.Height = FirstWindow.Height;
+        }
+
+        // Switch to the next screen, if any
+        private void ChangeScreenButton_OnClick(Object sender, RoutedEventArgs e)
+        {
+            return;
         }
 
         private void LineVisibilityButton_OnClick(object sender, RoutedEventArgs e)
