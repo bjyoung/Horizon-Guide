@@ -50,7 +50,7 @@ namespace Horizontal_Guide
             return secondary_screen;
         }
 
-        // When line thumb is moved, move line to match it's ehight
+        // When line thumb is moved, move line to match its height
         private void LineHeightSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             double thumb_height = calculate_thumb_height(LineHeightSlider, e.NewValue);
@@ -97,6 +97,7 @@ namespace Horizontal_Guide
             return thumb_actual_y;
         }
 
+        // Set line height
         private static void set_line_height(double new_height, Line horizon) 
         {
             if(horizon == null)
@@ -108,16 +109,16 @@ namespace Horizontal_Guide
             horizon.Y2 = new_height;
         }
 
+        // Adjust line's x-values so it covers the entire screen length-wise
         private void HorizonGuide_OnLoad(object sender, RoutedEventArgs e)
         {
-            // Adjust line's x-values so it covers the entire screen length-wise
             Line horizon = sender as Line;
             horizon.X2 = FirstWindow.Width;
         }
 
+        // Adjust slider's height so it covers the entire screen length-wise
         private void LineHeightSlider_OnLoad(object sender, RoutedEventArgs e)
         {
-            // Adjust slider's height so it covers the entire screen length-wise
             Slider height_slider = sender as Slider;
             height_slider.Height = FirstWindow.Height;
         }
@@ -140,6 +141,7 @@ namespace Horizontal_Guide
             FirstWindow.WindowState = WindowState.Maximized;
         }
 
+        // Make line visible or invisible
         private void LineVisibilityButton_OnClick(object sender, RoutedEventArgs e)
         {
             Button visibility_button = sender as Button;
@@ -162,14 +164,15 @@ namespace Horizontal_Guide
             }
         }
 
+        // Change line color to match the color picker
         private void LineColorPicker_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
             HorizonGuide.Stroke = new SolidColorBrush(LineColorPicker.SelectedColor.Value);
         }
 
+        // 
         private void LineThicknessButton_OnClick(object sender, RoutedEventArgs e)
         {
-            // If line thickness window is already closed, then set its tracker variable to null
             if(IsClosed(thickness_window))
             {
                 thickness_window = null;
@@ -195,10 +198,10 @@ namespace Horizontal_Guide
 
         public void UpdateLineThickness(int new_thickness)
         {
-            // Update line's thickness using new value
             HorizonGuide.StrokeThickness = new_thickness;
         }
 
+        // Open information sub-window
         private void InformationButton_OnClick(object sender, RoutedEventArgs e)
         {
             // TODO InformationButton_OnClick and LineThicknessButton_OnClick are really similar and could be simplified
@@ -221,6 +224,7 @@ namespace Horizontal_Guide
             info_window_temp.Show();
         }
 
+        // Slider setup once it is rendered
         private void FirstWindow_ContentRendered(object sender, EventArgs e)
         {
             if (LineHeightSlider != null)
@@ -230,16 +234,9 @@ namespace Horizontal_Guide
             }
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e) 
-        {
-            if (e.KeyboardDevice.Modifiers == ModifierKeys.Control) {
-               
-            }
-        }
-
+        // Close sub-windows if main window is closing
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            // Check if line thickness sub-window is open
             if(thickness_window != null)
             {
                 thickness_window.Close();
