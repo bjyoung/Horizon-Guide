@@ -136,12 +136,15 @@ namespace Horizontal_Guide{
             // If line if visible, then hide it
             if (line_visibility == Visibility.Visible){
                 HorizonGuide.Visibility = Visibility.Hidden;
+                LineHeightSlider.Visibility = Visibility.Hidden;
+
                 visibility_button.Content = FindResource("Show");
 
             }
 
             if (line_visibility == Visibility.Hidden){
                 HorizonGuide.Visibility = Visibility.Visible;
+                LineHeightSlider.Visibility = Visibility.Visible;
                 visibility_button.Content = FindResource("Hide");
             }
         }
