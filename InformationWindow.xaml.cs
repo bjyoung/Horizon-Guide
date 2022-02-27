@@ -1,11 +1,8 @@
-﻿namespace Horizontal_Guide
-{
+﻿namespace Horizontal_Guide{
     // Sub-window displaying general application information
-    public partial class InformationWindow : CloseableWindow
-    {
+    public partial class InformationWindow : CloseableWindow{
         // Constructor
-        public InformationWindow()
-        {
+        public InformationWindow(){
             InitializeComponent();
         }
     }

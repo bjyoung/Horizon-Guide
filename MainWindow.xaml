@@ -9,6 +9,7 @@
         mc:Ignorable="d"
         Title="Horizon Guide" Height="450" Width="800" 
         WindowState="Maximized"  SizeToContent="Manual"
+                       
         AllowsTransparency="True" WindowStyle="None"
         ContentRendered="FirstWindow_ContentRendered"
         Closing="MainWindow_Closing">
@@ -50,7 +51,8 @@
         <Button x:Name="ChangeScreenButton" 
                 Width="50" Height="50"
                 Canvas.Right="350" Canvas.Top="20"
-                Click="ChangeScreenButton_OnClick">
+                Click="ChangeScreenButton_OnClick"
+                Loaded="ChangeScreenButton_OnLoad">
             <DynamicResource ResourceKey="Change_Screen"/>
         </Button>
 
