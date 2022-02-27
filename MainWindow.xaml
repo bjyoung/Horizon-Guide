@@ -9,6 +9,7 @@
         mc:Ignorable="d"
         Title="Horizon Guide" Height="450" Width="800" 
         WindowState="Maximized"  SizeToContent="Manual"
+                       
         AllowsTransparency="True" WindowStyle="None"
         ContentRendered="FirstWindow_ContentRendered"
         Closing="MainWindow_Closing">

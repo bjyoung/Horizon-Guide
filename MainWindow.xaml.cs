@@ -164,7 +164,9 @@ namespace Horizontal_Guide{
             }
 
             // Open number drop-down list and when value changes, update line thickness
-            LineThicknessWindow line_thickness_window = new LineThicknessWindow();
+            LineThicknessWindow line_thickness_window = new();
+            line_thickness_window.ShowInTaskbar = false;
+            line_thickness_window.Owner = Application.Current.MainWindow;
             thickness_window = line_thickness_window;
             line_thickness_window.Show();
         }
@@ -193,7 +195,9 @@ namespace Horizontal_Guide{
             }
 
             // Open information window
-            InformationWindow info_window_temp = new InformationWindow();
+            InformationWindow info_window_temp = new();
+            info_window_temp.ShowInTaskbar = false;
+            info_window_temp.Owner = Application.Current.MainWindow;
             information_window = info_window_temp;
             info_window_temp.Show();
         }
