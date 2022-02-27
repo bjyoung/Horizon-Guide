@@ -12,10 +12,10 @@ namespace Horizontal_Guide{
     // Initial window with the adjustable line and UI buttons
     public partial class MainWindow : CloseableWindow{
         // To keep track of a reference to line thickness sub-window
-        private Window thickness_window = null;
+        private CloseableWindow thickness_window = null;
 
         // To keep track of reference to information sub-window
-        private Window information_window = null;
+        private CloseableWindow information_window = null;
 
         // How clear should a button look when disabled
         private double disabled_button_opacity = 0.35;
@@ -154,24 +154,24 @@ namespace Horizontal_Guide{
             HorizonGuide.Stroke = new SolidColorBrush(LineColorPicker.SelectedColor.Value);
         }
 
-        // 
-        private void LineThicknessButton_OnClick(object sender, RoutedEventArgs e){
-            if (IsClosed(thickness_window)){
-                thickness_window = null;
-            }
-
-            // If line thickness window was created already, make it active instead of creating a window
-            if (thickness_window != null){
-                thickness_window.Activate();
-                return;
+        private CloseableWindow setup_subwindow(CloseableWindow current_subwindow_ref, CloseableWindow new_subwindow) {
+            // If sub window already exists, activate existing window
+            if (!IsClosed(current_subwindow_ref)) {
+                current_subwindow_ref.Activate();
+                return current_subwindow_ref;
             }
 
             // Open number drop-down list and when value changes, update line thickness
+            new_subwindow.ShowInTaskbar = false;
+            new_subwindow.Owner = Application.Current.MainWindow;
+            new_subwindow.Show();
+            return new_subwindow;
+        }
+
+        // Open sub-window to update line thickness
+        private void LineThicknessButton_OnClick(object sender, RoutedEventArgs e){
             LineThicknessWindow line_thickness_window = new();
-            line_thickness_window.ShowInTaskbar = false;
-            line_thickness_window.Owner = Application.Current.MainWindow;
-            thickness_window = line_thickness_window;
-            line_thickness_window.Show();
+            thickness_window = setup_subwindow(thickness_window, line_thickness_window);
         }
 
         // Check if window is closed or not
@@ -185,24 +185,8 @@ namespace Horizontal_Guide{
 
         // Open information sub-window
         private void InformationButton_OnClick(object sender, RoutedEventArgs e){
-            // TODO InformationButton_OnClick and LineThicknessButton_OnClick are really similar and could be simplified
-            // If information window window is already closed, then set its tracker variable to null
-            if (IsClosed(information_window)){
-                information_window = null;
-            }
-
-            // If line thickness window was created already, make it active instead of creating a window
-            if (information_window != null){
-                information_window.Activate();
-                return;
-            }
-
-            // Open information window
             InformationWindow info_window_temp = new();
-            info_window_temp.ShowInTaskbar = false;
-            info_window_temp.Owner = Application.Current.MainWindow;
-            information_window = info_window_temp;
-            info_window_temp.Show();
+            information_window = setup_subwindow(information_window, info_window_temp);
         }
 
         // Slider setup once it is rendered
