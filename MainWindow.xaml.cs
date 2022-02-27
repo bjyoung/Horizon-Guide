@@ -25,33 +25,17 @@ namespace Horizontal_Guide
             InitializeComponent();
         }
 
-        private void MainWindow_OnLoad(object sender, RoutedEventArgs e) {
-            Screen secondary_screen = get_secondary_screen();
-
-            if (secondary_screen == null)
-            {
-                return;
-            }
-
-            FirstWindow.Top = secondary_screen.WorkingArea.Top;
-            FirstWindow.Left = secondary_screen.WorkingArea.Left;
-            FirstWindow.Width = secondary_screen.WorkingArea.Width;
-            FirstWindow.Height = secondary_screen.WorkingArea.Height;
-            FirstWindow.WindowState = WindowState.Maximized;
-        }
-
         // TODO make this work for any number of screens
         // Get secondary screen
         // Assumes that there are at most two screens
-        private Screen get_secondary_screen()
+        private Screen get_other_screen()
         {
             IEnumerable<Screen> screen_list = Screen.AllScreens;
-            Screen primary_screen = Screen.PrimaryScreen;
             Screen secondary_screen = null;
 
             foreach (Screen screen in screen_list)
             {
-                if (screen.DeviceName != primary_screen.DeviceName)
+                if (screen.WorkingArea.Top != FirstWindow.Top || screen.WorkingArea.Left != FirstWindow.Left)
                 {
                     secondary_screen = screen;
                     break;
@@ -73,7 +57,7 @@ namespace Horizontal_Guide
             set_line_height(thumb_height, HorizonGuide);
         }
 
-
+        // Get thumb part of slider
         private static Thumb get_thumb(Slider slider)
         {
             ControlTemplate slider_template = slider.Template;
@@ -88,9 +72,9 @@ namespace Horizontal_Guide
             return track == null ? null : track.Thumb;
         }
 
-        private double calculate_thumb_height(Slider slider, double value)
+        // Calculate actual thumb height
+        private static double calculate_thumb_height(Slider slider, double value)
         {
-            // Calculate actual thumb height based on the given thumb value
             // Get half of thumb height
             Thumb thumb = get_thumb(slider);
             double thumb_center_height = 0.0;
@@ -113,7 +97,7 @@ namespace Horizontal_Guide
             return thumb_actual_y;
         }
 
-        private void set_line_height(double new_height, Line horizon) 
+        private static void set_line_height(double new_height, Line horizon) 
         {
             if(horizon == null)
             {
@@ -138,10 +122,22 @@ namespace Horizontal_Guide
             height_slider.Height = FirstWindow.Height;
         }
 
-        // Switch to the next screen, if any
+        // Switch to the next screen, if it exists
         private void ChangeScreenButton_OnClick(Object sender, RoutedEventArgs e)
         {
-            return;
+            Screen alternate_screen = get_other_screen();
+
+            if (alternate_screen == null)
+            {
+                return;
+            }
+
+            FirstWindow.WindowState = WindowState.Normal;
+            FirstWindow.Top = alternate_screen.WorkingArea.Top;
+            FirstWindow.Left = alternate_screen.WorkingArea.Left;
+            FirstWindow.Width = alternate_screen.WorkingArea.Width;
+            FirstWindow.Height = alternate_screen.WorkingArea.Height;
+            FirstWindow.WindowState = WindowState.Maximized;
         }
 
         private void LineVisibilityButton_OnClick(object sender, RoutedEventArgs e)
