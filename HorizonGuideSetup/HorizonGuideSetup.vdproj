@@ -203,15 +203,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Horizon Guide"
-        "ProductCode" = "8:{FFA90138-C5DE-40EE-BC7A-32015920B1F7}"
-        "PackageCode" = "8:{58FFF766-1F82-45CC-A49E-B203FB8333F0}"
+        "ProductCode" = "8:{E690688E-BD38-4D10-A79D-05994B12B3D6}"
+        "PackageCode" = "8:{2EAF5C6F-25BB-4AA1-B7C2-8E95339F46CE}"
         "UpgradeCode" = "8:{60A3F480-8BEF-4D3D-BB86-E8B00EBFBB58}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.8"
+        "ProductVersion" = "8:1.0.9"
         "Manufacturer" = "8:Brandon Young"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -725,7 +725,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3BE4D85720FC440FA996E0538DC5FEEE"
             {
-            "SourcePath" = "8:..\\obj\\Debug\\net5.0-windows10.0.19041.0\\apphost.exe"
+            "SourcePath" = "8:..\\obj\\Debug\\net6.0-windows8.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_35E3655F0364459DBE98253386FCBD90"
@@ -749,6 +749,7 @@
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
+                "ExcludeFilter" = "8:Xceed.Wpf.AvalonDock.*"
                 }
             }
         }

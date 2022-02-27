@@ -5,6 +5,8 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using WpfScreenHelper;
+using System.Collections.Generic;
 
 namespace Horizontal_Guide
 {
@@ -23,14 +25,39 @@ namespace Horizontal_Guide
             InitializeComponent();
         }
 
-        // When line thumb is moved, move line to match it's ehight
+        // TODO make this work for any number of screens
+        // Get secondary screen
+        // Assumes that there are at most two screens
+        private Screen get_other_screen()
+        {
+            IEnumerable<Screen> screen_list = Screen.AllScreens;
+            Screen secondary_screen = null;
+
+            foreach (Screen screen in screen_list)
+            {
+                if (screen.WorkingArea.Top != FirstWindow.Top || screen.WorkingArea.Left != FirstWindow.Left)
+                {
+                    secondary_screen = screen;
+                    break;
+                }
+            }
+
+            if (secondary_screen == null)
+            {
+                Console.WriteLine("No secondary screen found");
+            }
+
+            return secondary_screen;
+        }
+
+        // When line thumb is moved, move line to match its height
         private void LineHeightSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             double thumb_height = calculate_thumb_height(LineHeightSlider, e.NewValue);
             set_line_height(thumb_height, HorizonGuide);
         }
 
-
+        // Get thumb part of slider
         private static Thumb get_thumb(Slider slider)
         {
             ControlTemplate slider_template = slider.Template;
@@ -45,9 +72,9 @@ namespace Horizontal_Guide
             return track == null ? null : track.Thumb;
         }
 
-        private double calculate_thumb_height(Slider slider, double value)
+        // Calculate actual thumb height
+        private static double calculate_thumb_height(Slider slider, double value)
         {
-            // Calculate actual thumb height based on the given thumb value
             // Get half of thumb height
             Thumb thumb = get_thumb(slider);
             double thumb_center_height = 0.0;
@@ -70,7 +97,8 @@ namespace Horizontal_Guide
             return thumb_actual_y;
         }
 
-        private void set_line_height(double new_height, Line horizon) 
+        // Set line height
+        private static void set_line_height(double new_height, Line horizon) 
         {
             if(horizon == null)
             {
@@ -81,20 +109,39 @@ namespace Horizontal_Guide
             horizon.Y2 = new_height;
         }
 
+        // Adjust line's x-values so it covers the entire screen length-wise
         private void HorizonGuide_OnLoad(object sender, RoutedEventArgs e)
         {
-            // Adjust line's x-values so it covers the entire screen length-wise
             Line horizon = sender as Line;
             horizon.X2 = FirstWindow.Width;
         }
 
+        // Adjust slider's height so it covers the entire screen length-wise
         private void LineHeightSlider_OnLoad(object sender, RoutedEventArgs e)
         {
-            // Adjust slider's height so it covers the entire screen length-wise
             Slider height_slider = sender as Slider;
             height_slider.Height = FirstWindow.Height;
         }
 
+        // Switch to the next screen, if it exists
+        private void ChangeScreenButton_OnClick(Object sender, RoutedEventArgs e)
+        {
+            Screen alternate_screen = get_other_screen();
+
+            if (alternate_screen == null)
+            {
+                return;
+            }
+
+            FirstWindow.WindowState = WindowState.Normal;
+            FirstWindow.Top = alternate_screen.WorkingArea.Top;
+            FirstWindow.Left = alternate_screen.WorkingArea.Left;
+            FirstWindow.Width = alternate_screen.WorkingArea.Width;
+            FirstWindow.Height = alternate_screen.WorkingArea.Height;
+            FirstWindow.WindowState = WindowState.Maximized;
+        }
+
+        // Make line visible or invisible
         private void LineVisibilityButton_OnClick(object sender, RoutedEventArgs e)
         {
             Button visibility_button = sender as Button;
@@ -117,14 +164,15 @@ namespace Horizontal_Guide
             }
         }
 
+        // Change line color to match the color picker
         private void LineColorPicker_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
             HorizonGuide.Stroke = new SolidColorBrush(LineColorPicker.SelectedColor.Value);
         }
 
+        // 
         private void LineThicknessButton_OnClick(object sender, RoutedEventArgs e)
         {
-            // If line thickness window is already closed, then set its tracker variable to null
             if(IsClosed(thickness_window))
             {
                 thickness_window = null;
@@ -150,10 +198,10 @@ namespace Horizontal_Guide
 
         public void UpdateLineThickness(int new_thickness)
         {
-            // Update line's thickness using new value
             HorizonGuide.StrokeThickness = new_thickness;
         }
 
+        // Open information sub-window
         private void InformationButton_OnClick(object sender, RoutedEventArgs e)
         {
             // TODO InformationButton_OnClick and LineThicknessButton_OnClick are really similar and could be simplified
@@ -176,6 +224,7 @@ namespace Horizontal_Guide
             info_window_temp.Show();
         }
 
+        // Slider setup once it is rendered
         private void FirstWindow_ContentRendered(object sender, EventArgs e)
         {
             if (LineHeightSlider != null)
@@ -185,16 +234,9 @@ namespace Horizontal_Guide
             }
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e) 
-        {
-            if (e.KeyboardDevice.Modifiers == ModifierKeys.Control) {
-               
-            }
-        }
-
+        // Close sub-windows if main window is closing
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            // Check if line thickness sub-window is open
             if(thickness_window != null)
             {
                 thickness_window.Close();

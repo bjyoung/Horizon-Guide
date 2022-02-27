@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:Horizontal_Guide"
         mc:Ignorable="d"
         Title="Horizon Guide" Height="450" Width="800" 
-        WindowState="Maximized" SizeToContent="Manual"
+        WindowState="Maximized"  SizeToContent="Manual"
         AllowsTransparency="True" WindowStyle="None"
         ContentRendered="FirstWindow_ContentRendered"
         Closing="MainWindow_Closing">
@@ -18,6 +18,7 @@
     </Window.Background>
 
     <Window.Resources>
+        <Image x:Key="Change_Screen" Source="data/change_screen_button_icon.png"/>
         <Image x:Key="Show" Source="data/show_line_button_icon.png"/>
         <Image x:Key="Hide" Source="data/hide_line_button_icon.png" Visibility="Visible"/>
         <Image x:Key="Line_Thickness" Source="data/line_thickness_button_icon.png"/>
@@ -41,10 +42,17 @@
         <Line
             x:Name="HorizonGuide"
             X1="0" Y1="{Binding ElementName=LineHeightSlider, Path=ActualHeight}"
-            X2="1920" Y2="{Binding ElementName=LineHeightSlider, Path=ActualHeight}"
+            X2="800" Y2="{Binding ElementName=LineHeightSlider, Path=ActualHeight}"
             Stroke="DarkOrange"
             StrokeThickness="4" 
             Loaded="HorizonGuide_OnLoad"/>
+
+        <Button x:Name="ChangeScreenButton" 
+                Width="50" Height="50"
+                Canvas.Right="350" Canvas.Top="20"
+                Click="ChangeScreenButton_OnClick">
+            <DynamicResource ResourceKey="Change_Screen"/>
+        </Button>
 
         <Button x:Name="LineVisibilityButton" 
                 Width="50" Height="50"

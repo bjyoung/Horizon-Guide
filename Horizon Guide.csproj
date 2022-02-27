@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
+    <TargetFramework>net6.0-windows8.0</TargetFramework>
     <RootNamespace>Horizontal_Guide</RootNamespace>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>horizon_guide_icon.ico</ApplicationIcon>
@@ -36,18 +36,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="data\change_screen_button_icon.png" />
     <None Remove="data\hide_line_button_icon.png" />
     <None Remove="data\information_button_icon.png" />
     <None Remove="data\line_thickness_button_icon.png" />
     <None Remove="data\show_line_button_icon.png" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.2.0" />
+    <PackageReference Include="WpfScreenHelper" Version="2.0.0" />
+    <Resource Include="data\change_screen_button_icon.png" />
     <Resource Include="data\horizon_guide_icon.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.2.0" />
   </ItemGroup>
 
   <ItemGroup>
