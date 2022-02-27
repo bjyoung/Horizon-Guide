@@ -164,7 +164,7 @@ namespace Horizontal_Guide{
             }
 
             // Open number drop-down list and when value changes, update line thickness
-            Window1 line_thickness_window = new Window1();
+            LineThicknessWindow line_thickness_window = new LineThicknessWindow();
             thickness_window = line_thickness_window;
             line_thickness_window.Show();
         }
