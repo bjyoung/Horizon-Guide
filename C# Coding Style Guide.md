@@ -4,7 +4,7 @@ Guide that describes code styling practices used in Horizon Guide
 
 ## General Recommendation
 
-If a practice is not covered here, then follow [Microsoft's C# Coding Conventions](https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions) or [Google's C# Style Guide](https://google.github.io/styleguide/csharp-style.html). When in doubt, follow existing code base conventions.
+If a style is not covered here, then follow [Microsoft's C# Coding Conventions](https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions) or [Google's C# Style Guide](https://google.github.io/styleguide/csharp-style.html). When in doubt, follow existing code base conventions.
 
 ## Naming Rules
 
