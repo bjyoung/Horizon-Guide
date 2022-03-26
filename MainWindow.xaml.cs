@@ -4,9 +4,9 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
-using System.Windows.Input;
 using WpfScreenHelper;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Horizontal_Guide{
     // Initial window with the adjustable line and UI buttons
@@ -18,32 +18,41 @@ namespace Horizontal_Guide{
         private CloseableWindow information_window = null;
 
         // How clear should a button look when disabled
-        private double disabled_button_opacity = 0.35;
+        private readonly double disabled_button_opacity = 0.35;
 
         // Constructor
         public MainWindow(){
             InitializeComponent();
         }
 
-        // TODO make this work for any number of screens
         // Get secondary screen
         // Assumes that there are at most two screens
         private Screen get_other_screen(){
-            IEnumerable<Screen> screen_list = Screen.AllScreens;
+            IList<Screen> screen_list = Screen.AllScreens.ToList();
             Screen secondary_screen = null;
+            Screen current_screen = null;
 
-            foreach (Screen screen in screen_list){
-                if (screen.WorkingArea.Top != FirstWindow.Top || screen.WorkingArea.Left != FirstWindow.Left){
-                    secondary_screen = screen;
+            foreach (Screen screen in screen_list) {
+                if (IsCurrentScreen(screen)) {
+                    current_screen = screen;
                     break;
                 }
             }
 
-            if (secondary_screen == null){
+            if(current_screen != null) {
+                secondary_screen = get_next_screen(screen_list, current_screen);
+            } else {
                 Console.WriteLine("No secondary screen found");
             }
 
             return secondary_screen;
+        }
+
+        // Given list of screens and the current screen, get the next screen in the list
+        private Screen get_next_screen(IList<Screen> screen_list, Screen current_screen) {
+            int current_screen_index = screen_list.IndexOf(current_screen);
+            int next_screen_index = current_screen_index + 1 >= screen_list.Count ? 0 : current_screen_index + 1;
+            return screen_list[next_screen_index];
         }
 
         // When line thumb is moved, move line to match its height
@@ -119,10 +128,7 @@ namespace Horizontal_Guide{
             }
 
             FirstWindow.WindowState = WindowState.Normal;
-            FirstWindow.Top = alternate_screen.WorkingArea.Top;
-            FirstWindow.Left = alternate_screen.WorkingArea.Left;
-            FirstWindow.Width = alternate_screen.WorkingArea.Width;
-            FirstWindow.Height = alternate_screen.WorkingArea.Height;
+            MatchWindowToScreen(FirstWindow, alternate_screen);
             FirstWindow.WindowState = WindowState.Maximized;
         }
 
@@ -195,6 +201,11 @@ namespace Horizontal_Guide{
                 double thumb_height = calculate_thumb_height(LineHeightSlider, LineHeightSlider.Value);
                 set_line_height(thumb_height, HorizonGuide);
             }
+
+            // Set FirstWindow properties
+            FirstWindow.WindowState = WindowState.Normal;
+            MatchWindowToScreen(FirstWindow, Screen.AllScreens.First());
+            FirstWindow.WindowState = WindowState.Maximized;
         }
 
         // Close sub-windows if main window is closing
@@ -210,7 +221,7 @@ namespace Horizontal_Guide{
 
         // If there is only one monitor, then disable Change Screen button
         private void ChangeScreenButton_OnLoad(object sender, RoutedEventArgs e){
-            if (get_other_screen() == null){
+            if (HasMultipleScreens() == false) {
                 disable_button(ChangeScreenButton);
             }
         }
@@ -219,6 +230,24 @@ namespace Horizontal_Guide{
         private void disable_button(Button button){
             button.IsEnabled = false;
             button.Opacity = disabled_button_opacity;
+        }
+
+        // Checks if given screen is the screen the app is currently on
+        // FirstWindow must be set
+        private Boolean IsCurrentScreen(Screen screen) {
+            return screen.WorkingArea.Top == FirstWindow.Top && screen.WorkingArea.Left == FirstWindow.Left;
+        }
+
+        private Boolean HasMultipleScreens() {
+            IEnumerable<Screen> screen_list = Screen.AllScreens;
+            return screen_list.Count() > 1;
+        }
+
+        private void MatchWindowToScreen(Window window, Screen screen) {
+            window.Top = screen.WorkingArea.Top;
+            window.Left = screen.WorkingArea.Left;
+            window.Width = screen.WorkingArea.Width;
+            window.Height = screen.WorkingArea.Height;
         }
     }
 }
