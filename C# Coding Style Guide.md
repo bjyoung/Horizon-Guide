@@ -12,6 +12,7 @@ If a practice is not covered here, then follow [Microsoft's C# Coding Convention
 
 - Names of classes, methods, enumerations, public fields, namespaces: PascalCase
 - Names of local variables, parameters, including private and protected fields: camelCase
+- Names of private and protected fields: _camelCase
 - Interface names start with the letter 'I'
 
 ### Files
@@ -26,18 +27,6 @@ If a practice is not covered here, then follow [Microsoft's C# Coding Convention
 
 - 'using' imports are in alphabetical order, except System imports go first
 
-## Curly Braces & Parentheses
-
-- Leave one curly brace in-line and the other on a new line
-- Leave a space between curly braces and parentheses, class names, etc.
-- Leave a space between if-else keywords and the condition's starting parentheses
-
-```c#
-if (true) {
-    // Do stuff here
-}
-```
-
 ## Commenting
 
 - Place comments on a separate line, not at the end of a line of code
@@ -49,7 +38,39 @@ if (true) {
 // This is an example comment
 ```
 
-## Implicitly typed local variables
+## Implicitly Typed Local Variables
 
 - Avoid implicit typing when possible, unless typing is obvious
   - Do not assume type is clear from method names
+
+## Whitespace, Tabs & Curly Braces
+
+- Maximum of one statement per line
+- Column limit: 150
+- Each indent done by one tab
+- No line break before opening brace
+- No line break between closing brace and else
+- Always use braces even when optional
+- Space after if, for, while, etc.
+
+```c#
+if (true) {
+    // Do stuff here
+}
+```
+
+## Constants
+
+- Variables and fields that can be made const should always be made const
+- If const isn't possible, use readonly instead
+- Use constants instead of magic numbers
+
+## Folders and file locations
+
+- Prefer a flat structure where possible
+
+## Namespaces
+
+- In general, namespaces should be no more than 2 levels deep
+- Don't force file/folder layout to match namespaces
+- 
