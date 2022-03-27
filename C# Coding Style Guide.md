@@ -53,6 +53,7 @@ If a style is not covered here, then follow [Microsoft's C# Coding Conventions](
 - No line break between closing brace and else
 - Always use braces even when optional
 - Space after if, for, while, etc.
+- Space between opening curly brace and closing parentheses
 
 ```c#
 if (true) {
