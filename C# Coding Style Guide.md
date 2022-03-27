@@ -22,7 +22,7 @@ If a style is not covered here, then follow [Microsoft's C# Coding Conventions](
 
 ## Organization
 
-- Use modifiers in the following order: public protected internal private new abstract virtual override sealed static readonly extern unsafe volatile async
+- Use modifiers in the following order: public protected internal private new abstract virtual override static const readonly  async
 
 - Namespace 'using' declarations go at the top before namespaces
 
