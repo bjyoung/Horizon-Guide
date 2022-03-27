@@ -13,6 +13,7 @@ If a style is not covered here, then follow [Microsoft's C# Coding Conventions](
 - Names of classes, methods, enumerations, public fields, namespaces: PascalCase
 - Names of local variables, parameters, including private and protected fields: camelCase
 - Names of private and protected fields: _camelCase
+- Names of OnClick, OnLoad, etc. method: ObjectName_OnClick
 - Interface names start with the letter 'I'
 
 ### Files
@@ -73,4 +74,3 @@ if (true) {
 
 - In general, namespaces should be no more than 2 levels deep
 - Don't force file/folder layout to match namespaces
-- 
