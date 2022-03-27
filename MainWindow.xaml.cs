@@ -11,99 +11,92 @@ using System.Linq;
 namespace HorizontalGuide{
     // Initial window with the adjustable line and UI buttons
     public partial class MainWindow : CloseableWindow{
-        // To keep track of a reference to line thickness sub-window
+
         private CloseableWindow _thicknessWindow = null;
 
-        // To keep track of reference to information sub-window
         private CloseableWindow _informationWindow = null;
 
-        // How clear should a button look when disabled
-        private readonly double disabled_button_opacity = 0.35;
+        private const double _disabledButtonOpacity = 0.35;
 
         public MainWindow(){
             InitializeComponent();
         }
 
-        // Get secondary screen
-        // Assumes that there are at most two screens
+        // Get next screen besides the one the app is currently on
         private Screen GetOtherScreen(){
-            IList<Screen> screen_list = Screen.AllScreens.ToList();
-            Screen secondary_screen = null;
-            Screen current_screen = null;
+            IList<Screen> screenList = Screen.AllScreens.ToList();
+            Screen secondaryScreen = null;
+            Screen currentScreen = null;
 
-            foreach (Screen screen in screen_list) {
+            foreach (Screen screen in screenList) {
                 if (IsCurrentScreen(screen)) {
-                    current_screen = screen;
+                    currentScreen = screen;
                     break;
                 }
             }
 
-            if(current_screen != null) {
-                secondary_screen = GetNextScreen(screen_list, current_screen);
+            if(currentScreen != null) {
+                secondaryScreen = GetNextScreen(screenList, currentScreen);
             } else {
                 Console.WriteLine("No secondary screen found");
             }
 
-            return secondary_screen;
+            return secondaryScreen;
         }
 
-        // Given list of screens and the current screen, get the next screen in the list
-        private static Screen GetNextScreen(IList<Screen> screen_list, Screen current_screen) {
-            int current_screen_index = screen_list.IndexOf(current_screen);
-            int next_screen_index = current_screen_index + 1 >= screen_list.Count ? 0 : current_screen_index + 1;
-            return screen_list[next_screen_index];
+        private static Screen GetNextScreen(IList<Screen> screenList, Screen currentScreen) {
+            int currentScreenIndex = screenList.IndexOf(currentScreen);
+            int nextScreenIndex = currentScreenIndex + 1 >= screenList.Count ? 0 : currentScreenIndex + 1;
+            return screenList[nextScreenIndex];
         }
 
         // When line thumb is moved, move line to match its height
         private void LineHeightSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e){
-            double thumb_height = CalculateThumbHeight(LineHeightSlider, e.NewValue);
-            SetLineHeight(thumb_height, HorizonGuide);
+            double thumbHeight = CalculateThumbHeight(LineHeightSlider, e.NewValue);
+            SetLineHeight(thumbHeight, HorizonGuide);
         }
 
-        // Get thumb part of slider
         private static Thumb GetThumb(Slider slider){
-            ControlTemplate slider_template = slider.Template;
+            ControlTemplate sliderTemplate = slider.Template;
 
             // Because changing the slider's initial value makes the template null for a split second at the beginning
-            if (slider_template == null){
+            if (sliderTemplate == null){
                 return null;
             }
 
-            var track = slider_template.FindName("PART_Track", slider) as Track;
+            Track track = sliderTemplate.FindName("PART_Track", slider) as Track;
             return track == null ? null : track.Thumb;
         }
 
-        // Calculate actual thumb height
         private static double CalculateThumbHeight(Slider slider, double value){
             // Get half of thumb height
             Thumb thumb = GetThumb(slider);
-            double thumb_center_height = 0.0;
+            double thumbCenterHeight = 0.0;
 
             if (thumb != null){
-                thumb_center_height = thumb.ActualHeight / 2;
+                thumbCenterHeight = thumb.ActualHeight / 2;
             }
 
             // Find ratio of thumb y-position to slider height
-            double slider_range = slider.Maximum - slider.Minimum;
-            double thumb_ratio = (value * 1.0) / slider_range;
-            double thumb_center_height_ratio = thumb_center_height * thumb_ratio;
+            double sliderRange = slider.Maximum - slider.Minimum;
+            double thumbRatio = (value * 1.0) / sliderRange;
+            double thumbCenterHeightRatio = thumbCenterHeight * thumbRatio;
 
             // Multiply thumb ratio by slider height
-            double slider_real_height = slider.ActualHeight - 5.5;
-            double thumb_relative_y = slider_real_height * thumb_ratio;
-            double thumb_actual_y = slider_real_height - thumb_relative_y + thumb_center_height_ratio;
+            double sliderRealHeight = slider.ActualHeight - 5.5;
+            double thumbRelativeY = sliderRealHeight * thumbRatio;
+            double thumbActualY = sliderRealHeight - thumbRelativeY + thumbCenterHeightRatio;
 
-            return thumb_actual_y;
+            return thumbActualY;
         }
 
-        // Set line height
-        private static void SetLineHeight(double new_height, Line horizon){
+        private static void SetLineHeight(double newHeight, Line horizon){
             if (horizon == null){
                 return;
             }
 
-            horizon.Y1 = new_height;
-            horizon.Y2 = new_height;
+            horizon.Y1 = newHeight;
+            horizon.Y2 = newHeight;
         }
 
         // Adjust line's x-values so it covers the entire screen length-wise
@@ -114,43 +107,43 @@ namespace HorizontalGuide{
 
         // Adjust slider's height so it covers the entire screen length-wise
         private void LineHeightSlider_OnLoad(object sender, RoutedEventArgs e){
-            Slider height_slider = sender as Slider;
-            height_slider.Height = FirstWindow.Height;
+            Slider heightSlider = sender as Slider;
+            heightSlider.Height = FirstWindow.Height;
         }
 
         // Switch to the next screen, if it exists
         private void ChangeScreenButton_OnClick(Object sender, RoutedEventArgs e){
-            Screen alternate_screen = GetOtherScreen();
+            Screen alternateScreen = GetOtherScreen();
 
-            if (alternate_screen == null){
+            if (alternateScreen == null){
                 return;
             }
 
             FirstWindow.WindowState = WindowState.Normal;
-            MatchWindowToScreen(FirstWindow, alternate_screen);
+            MatchWindowToScreen(FirstWindow, alternateScreen);
             FirstWindow.WindowState = WindowState.Maximized;
         }
 
         // Make line visible or invisible
         private void LineVisibilityButton_OnClick(object sender, RoutedEventArgs e){
-            Button visibility_button = sender as Button;
+            Button visibilityButton = sender as Button;
 
             // Find out line's current visibility setting
-            Visibility line_visibility = HorizonGuide.Visibility;
+            Visibility lineVisibility = HorizonGuide.Visibility;
 
             // If line if visible, then hide it
-            if (line_visibility == Visibility.Visible){
+            if (lineVisibility == Visibility.Visible){
                 HorizonGuide.Visibility = Visibility.Hidden;
                 LineHeightSlider.Visibility = Visibility.Hidden;
 
-                visibility_button.Content = FindResource("Show");
+                visibilityButton.Content = FindResource("Show");
 
             }
 
-            if (line_visibility == Visibility.Hidden){
+            if (lineVisibility == Visibility.Hidden){
                 HorizonGuide.Visibility = Visibility.Visible;
                 LineHeightSlider.Visibility = Visibility.Visible;
-                visibility_button.Content = FindResource("Hide");
+                visibilityButton.Content = FindResource("Hide");
             }
         }
 
@@ -159,24 +152,24 @@ namespace HorizontalGuide{
             HorizonGuide.Stroke = new SolidColorBrush(LineColorPicker.SelectedColor.Value);
         }
 
-        private static CloseableWindow SetupSubwindow(CloseableWindow current_subwindow_ref, CloseableWindow new_subwindow) {
+        private static CloseableWindow SetupSubwindow(CloseableWindow currentWindow, CloseableWindow newWindow) {
             // If sub window already exists, activate existing window
-            if (!IsClosed(current_subwindow_ref)) {
-                current_subwindow_ref.Activate();
-                return current_subwindow_ref;
+            if (!IsClosed(currentWindow)) {
+                currentWindow.Activate();
+                return currentWindow;
             }
 
             // Open number drop-down list and when value changes, update line thickness
-            new_subwindow.ShowInTaskbar = false;
-            new_subwindow.Owner = Application.Current.MainWindow;
-            new_subwindow.Show();
-            return new_subwindow;
+            newWindow.ShowInTaskbar = false;
+            newWindow.Owner = Application.Current.MainWindow;
+            newWindow.Show();
+            return newWindow;
         }
 
         // Open sub-window to update line thickness
         private void LineThicknessButton_OnClick(object sender, RoutedEventArgs e){
-            LineThicknessWindow line_thickness_window = new();
-            _thicknessWindow = SetupSubwindow(_thicknessWindow, line_thickness_window);
+            LineThicknessWindow lineThicknessWindow = new();
+            _thicknessWindow = SetupSubwindow(_thicknessWindow, lineThicknessWindow);
         }
 
         // Check if window is closed or not
@@ -184,21 +177,21 @@ namespace HorizontalGuide{
             return window == null || window.IsLoaded != true;
         }
 
-        public void UpdateLineThickness(int new_thickness){
-            HorizonGuide.StrokeThickness = new_thickness;
+        public void UpdateLineThickness(int newThickness){
+            HorizonGuide.StrokeThickness = newThickness;
         }
 
         // Open information sub-window
         private void InformationButton_OnClick(object sender, RoutedEventArgs e){
-            InformationWindow info_window_temp = new();
-            _informationWindow = SetupSubwindow(_informationWindow, info_window_temp);
+            InformationWindow infoWindowTemp = new();
+            _informationWindow = SetupSubwindow(_informationWindow, infoWindowTemp);
         }
 
         // Slider setup once it is rendered
         private void FirstWindow_ContentRendered(object sender, EventArgs e){
             if (LineHeightSlider != null){
-                double thumb_height = CalculateThumbHeight(LineHeightSlider, LineHeightSlider.Value);
-                SetLineHeight(thumb_height, HorizonGuide);
+                double thumbHeight = CalculateThumbHeight(LineHeightSlider, LineHeightSlider.Value);
+                SetLineHeight(thumbHeight, HorizonGuide);
             }
 
             // Set FirstWindow properties
@@ -225,10 +218,10 @@ namespace HorizontalGuide{
             }
         }
 
-        // Disable the button and make it transparent
-        private void DisableButton(Button button){
+        // Disable button and make it transparent
+        private static void DisableButton(Button button){
             button.IsEnabled = false;
-            button.Opacity = disabled_button_opacity;
+            button.Opacity = _disabledButtonOpacity;
         }
 
         // Checks if given screen is the screen the app is currently on
@@ -238,8 +231,8 @@ namespace HorizontalGuide{
         }
 
         private static Boolean HasMultipleScreens() {
-            IEnumerable<Screen> screen_list = Screen.AllScreens;
-            return screen_list.Count() > 1;
+            IEnumerable<Screen> screenList = Screen.AllScreens;
+            return screenList.Count() > 1;
         }
 
         private static void MatchWindowToScreen(Window window, Screen screen) {
