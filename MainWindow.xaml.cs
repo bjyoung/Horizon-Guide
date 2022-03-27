@@ -8,14 +8,14 @@ using WpfScreenHelper;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Horizontal_Guide{
+namespace HorizontalGuide{
     // Initial window with the adjustable line and UI buttons
     public partial class MainWindow : CloseableWindow{
         // To keep track of a reference to line thickness sub-window
-        private CloseableWindow thickness_window = null;
+        private CloseableWindow _thicknessWindow = null;
 
         // To keep track of reference to information sub-window
-        private CloseableWindow information_window = null;
+        private CloseableWindow _informationWindow = null;
 
         // How clear should a button look when disabled
         private readonly double disabled_button_opacity = 0.35;
@@ -177,7 +177,7 @@ namespace Horizontal_Guide{
         // Open sub-window to update line thickness
         private void LineThicknessButton_OnClick(object sender, RoutedEventArgs e){
             LineThicknessWindow line_thickness_window = new();
-            thickness_window = setup_subwindow(thickness_window, line_thickness_window);
+            _thicknessWindow = setup_subwindow(_thicknessWindow, line_thickness_window);
         }
 
         // Check if window is closed or not
@@ -192,7 +192,7 @@ namespace Horizontal_Guide{
         // Open information sub-window
         private void InformationButton_OnClick(object sender, RoutedEventArgs e){
             InformationWindow info_window_temp = new();
-            information_window = setup_subwindow(information_window, info_window_temp);
+            _informationWindow = setup_subwindow(_informationWindow, info_window_temp);
         }
 
         // Slider setup once it is rendered
@@ -210,12 +210,12 @@ namespace Horizontal_Guide{
 
         // Close sub-windows if main window is closing
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e){
-            if (thickness_window != null){
-                thickness_window.Close();
+            if (_thicknessWindow != null){
+                _thicknessWindow.Close();
             }
 
-            if (information_window != null){
-                information_window.Close();
+            if (_informationWindow != null){
+                _informationWindow.Close();
             }
         }
 

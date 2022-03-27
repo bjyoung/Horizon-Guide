@@ -43,7 +43,7 @@ If a style is not covered here, then follow [Microsoft's C# Coding Conventions](
 - Avoid implicit typing when possible, unless typing is obvious
   - Do not assume type is clear from method names
 
-## Whitespace, Tabs & Curly Braces
+## Whitespace, Tab & Curly Braces
 
 - Maximum of one statement per line
 - Column limit: 150

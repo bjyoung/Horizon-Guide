@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-namespace Horizontal_Guide{
+namespace HorizontalGuide{
     // Window that can be closed using CTRL + W shortcut
     public partial class CloseableWindow : Window{
         // Only close if window is active

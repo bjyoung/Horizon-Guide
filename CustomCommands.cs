@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace Horizontal_Guide{
+namespace HorizontalGuide{
     // A collection of custom commands for Horizon Guide
     public static class CustomCommands{
         // Command closes window when triggered

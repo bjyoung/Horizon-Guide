@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Horizontal_Guide{
+namespace HorizontalGuide{
     // Sub-window displaying line-thickness
     public partial class LineThicknessWindow : CloseableWindow{
         // Constructor
