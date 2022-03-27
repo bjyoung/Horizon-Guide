@@ -41,7 +41,7 @@ If a style is not covered here, then follow [Microsoft's C# Coding Conventions](
 
 ## Implicitly Typed Local Variables
 
-- Avoid implicit typing when possible, unless typing is obvious
+- Avoid implicit typing (var) when possible, unless typing is obvious
   - Do not assume type is clear from method names
 
 ## Whitespace, Tab & Curly Braces
