@@ -36,22 +36,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="data\HideLineButtonIcon.png" />
-    <None Remove="data\InformationButtonIcon.png" />
-    <None Remove="data\LineThicknessButtonIcon.png" />
-    <None Remove="data\ShowLineButtonIcon.png" />
-    <None Remove="data\SwitchScreenButtonIcon.png" />
-    <Content Include="data\HorizonGuideIcon.ico" />
+    <None Remove="Data\HideLineButtonIcon.png" />
+    <None Remove="Data\InformationButtonIcon.png" />
+    <None Remove="Data\LineThicknessButtonIcon.png" />
+    <None Remove="Data\ShowLineButtonIcon.png" />
+    <None Remove="Data\SwitchScreenButtonIcon.png" />
+    <Content Include="Data\HorizonGuideIcon.ico" />
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.2.0" />
     <PackageReference Include="WpfScreenHelper" Version="2.0.0" />
-    <Resource Include="data\SwitchScreenButtonIcon.png" />
+    <Resource Include="Data\SwitchScreenButtonIcon.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="data\HideLineButtonIcon.png" />
-    <Resource Include="data\InformationButtonIcon.png" />
-    <Resource Include="data\LineThicknessButtonIcon.png" />
-    <Resource Include="data\ShowLineButtonIcon.png" />
+    <Resource Include="Data\HideLineButtonIcon.png" />
+    <Resource Include="Data\InformationButtonIcon.png" />
+    <Resource Include="Data\LineThicknessButtonIcon.png" />
+    <Resource Include="Data\ShowLineButtonIcon.png" />
   </ItemGroup>
 
 </Project>
