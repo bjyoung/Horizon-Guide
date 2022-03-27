@@ -1,4 +1,4 @@
-# C# Coding Style Guide
+# C# Style Guide
 
 Guide that describes code styling practices used in Horizon Guide
 
