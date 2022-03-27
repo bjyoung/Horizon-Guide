@@ -5,7 +5,6 @@ using System.Windows.Controls;
 namespace HorizontalGuide{
     // Sub-window displaying line-thickness
     public partial class LineThicknessWindow : CloseableWindow{
-        // Constructor
         public LineThicknessWindow(){
             InitializeComponent();
         }

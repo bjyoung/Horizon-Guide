@@ -20,14 +20,13 @@ namespace HorizontalGuide{
         // How clear should a button look when disabled
         private readonly double disabled_button_opacity = 0.35;
 
-        // Constructor
         public MainWindow(){
             InitializeComponent();
         }
 
         // Get secondary screen
         // Assumes that there are at most two screens
-        private Screen get_other_screen(){
+        private Screen GetOtherScreen(){
             IList<Screen> screen_list = Screen.AllScreens.ToList();
             Screen secondary_screen = null;
             Screen current_screen = null;
@@ -40,7 +39,7 @@ namespace HorizontalGuide{
             }
 
             if(current_screen != null) {
-                secondary_screen = get_next_screen(screen_list, current_screen);
+                secondary_screen = GetNextScreen(screen_list, current_screen);
             } else {
                 Console.WriteLine("No secondary screen found");
             }
@@ -49,7 +48,7 @@ namespace HorizontalGuide{
         }
 
         // Given list of screens and the current screen, get the next screen in the list
-        private Screen get_next_screen(IList<Screen> screen_list, Screen current_screen) {
+        private static Screen GetNextScreen(IList<Screen> screen_list, Screen current_screen) {
             int current_screen_index = screen_list.IndexOf(current_screen);
             int next_screen_index = current_screen_index + 1 >= screen_list.Count ? 0 : current_screen_index + 1;
             return screen_list[next_screen_index];
@@ -57,12 +56,12 @@ namespace HorizontalGuide{
 
         // When line thumb is moved, move line to match its height
         private void LineHeightSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e){
-            double thumb_height = calculate_thumb_height(LineHeightSlider, e.NewValue);
-            set_line_height(thumb_height, HorizonGuide);
+            double thumb_height = CalculateThumbHeight(LineHeightSlider, e.NewValue);
+            SetLineHeight(thumb_height, HorizonGuide);
         }
 
         // Get thumb part of slider
-        private static Thumb get_thumb(Slider slider){
+        private static Thumb GetThumb(Slider slider){
             ControlTemplate slider_template = slider.Template;
 
             // Because changing the slider's initial value makes the template null for a split second at the beginning
@@ -75,9 +74,9 @@ namespace HorizontalGuide{
         }
 
         // Calculate actual thumb height
-        private static double calculate_thumb_height(Slider slider, double value){
+        private static double CalculateThumbHeight(Slider slider, double value){
             // Get half of thumb height
-            Thumb thumb = get_thumb(slider);
+            Thumb thumb = GetThumb(slider);
             double thumb_center_height = 0.0;
 
             if (thumb != null){
@@ -98,7 +97,7 @@ namespace HorizontalGuide{
         }
 
         // Set line height
-        private static void set_line_height(double new_height, Line horizon){
+        private static void SetLineHeight(double new_height, Line horizon){
             if (horizon == null){
                 return;
             }
@@ -121,7 +120,7 @@ namespace HorizontalGuide{
 
         // Switch to the next screen, if it exists
         private void ChangeScreenButton_OnClick(Object sender, RoutedEventArgs e){
-            Screen alternate_screen = get_other_screen();
+            Screen alternate_screen = GetOtherScreen();
 
             if (alternate_screen == null){
                 return;
@@ -160,7 +159,7 @@ namespace HorizontalGuide{
             HorizonGuide.Stroke = new SolidColorBrush(LineColorPicker.SelectedColor.Value);
         }
 
-        private CloseableWindow setup_subwindow(CloseableWindow current_subwindow_ref, CloseableWindow new_subwindow) {
+        private static CloseableWindow SetupSubwindow(CloseableWindow current_subwindow_ref, CloseableWindow new_subwindow) {
             // If sub window already exists, activate existing window
             if (!IsClosed(current_subwindow_ref)) {
                 current_subwindow_ref.Activate();
@@ -177,7 +176,7 @@ namespace HorizontalGuide{
         // Open sub-window to update line thickness
         private void LineThicknessButton_OnClick(object sender, RoutedEventArgs e){
             LineThicknessWindow line_thickness_window = new();
-            _thicknessWindow = setup_subwindow(_thicknessWindow, line_thickness_window);
+            _thicknessWindow = SetupSubwindow(_thicknessWindow, line_thickness_window);
         }
 
         // Check if window is closed or not
@@ -192,14 +191,14 @@ namespace HorizontalGuide{
         // Open information sub-window
         private void InformationButton_OnClick(object sender, RoutedEventArgs e){
             InformationWindow info_window_temp = new();
-            _informationWindow = setup_subwindow(_informationWindow, info_window_temp);
+            _informationWindow = SetupSubwindow(_informationWindow, info_window_temp);
         }
 
         // Slider setup once it is rendered
         private void FirstWindow_ContentRendered(object sender, EventArgs e){
             if (LineHeightSlider != null){
-                double thumb_height = calculate_thumb_height(LineHeightSlider, LineHeightSlider.Value);
-                set_line_height(thumb_height, HorizonGuide);
+                double thumb_height = CalculateThumbHeight(LineHeightSlider, LineHeightSlider.Value);
+                SetLineHeight(thumb_height, HorizonGuide);
             }
 
             // Set FirstWindow properties
@@ -222,12 +221,12 @@ namespace HorizontalGuide{
         // If there is only one monitor, then disable Change Screen button
         private void ChangeScreenButton_OnLoad(object sender, RoutedEventArgs e){
             if (HasMultipleScreens() == false) {
-                disable_button(ChangeScreenButton);
+                DisableButton(ChangeScreenButton);
             }
         }
 
         // Disable the button and make it transparent
-        private void disable_button(Button button){
+        private void DisableButton(Button button){
             button.IsEnabled = false;
             button.Opacity = disabled_button_opacity;
         }
@@ -238,12 +237,12 @@ namespace HorizontalGuide{
             return screen.WorkingArea.Top == FirstWindow.Top && screen.WorkingArea.Left == FirstWindow.Left;
         }
 
-        private Boolean HasMultipleScreens() {
+        private static Boolean HasMultipleScreens() {
             IEnumerable<Screen> screen_list = Screen.AllScreens;
             return screen_list.Count() > 1;
         }
 
-        private void MatchWindowToScreen(Window window, Screen screen) {
+        private static void MatchWindowToScreen(Window window, Screen screen) {
             window.Top = screen.WorkingArea.Top;
             window.Left = screen.WorkingArea.Left;
             window.Width = screen.WorkingArea.Width;
