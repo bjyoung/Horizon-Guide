@@ -36,7 +36,7 @@
     <None Remove="Data\ShowLineButtonIcon.png" />
     <None Remove="Data\SwitchScreenButtonIcon.png" />
     <Content Include="Data\HorizonGuideIcon.ico" />
-    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.2.0" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.3.0" />
     <PackageReference Include="WpfScreenHelper" Version="2.0.0" />
     <Resource Include="Data\HorizonGuideIcon.png" />
     <Resource Include="Data\SwitchScreenButtonIcon.png" />
