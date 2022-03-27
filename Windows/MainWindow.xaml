@@ -19,11 +19,11 @@
     </Window.Background>
 
     <Window.Resources>
-        <Image x:Key="Change_Screen" Source="data/SwitchScreenButtonIcon.png"/>
-        <Image x:Key="Show" Source="data/ShowLineButtonIcon.png"/>
-        <Image x:Key="Hide" Source="data/HideLineButtonIcon.png" Visibility="Visible"/>
-        <Image x:Key="Line_Thickness" Source="data/LineThicknessButtonIcon.png"/>
-        <Image x:Key="Information" Source="data/InformationButtonIcon.png"/>
+        <Image x:Key="Change_Screen" Source="../Data/SwitchScreenButtonIcon.png"/>
+        <Image x:Key="Show" Source="../Data/ShowLineButtonIcon.png"/>
+        <Image x:Key="Hide" Source="../Data/HideLineButtonIcon.png" Visibility="Visible"/>
+        <Image x:Key="Line_Thickness" Source="../Data/LineThicknessButtonIcon.png"/>
+        <Image x:Key="Information" Source="../Data/InformationButtonIcon.png"/>
     </Window.Resources>
 
     <Window.CommandBindings>

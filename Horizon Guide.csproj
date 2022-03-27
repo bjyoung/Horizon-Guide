@@ -29,14 +29,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Commands\**" />
-    <EmbeddedResource Remove="Commands\**" />
-    <None Remove="Commands\**" />
-    <Page Remove="Commands\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Data\HideLineButtonIcon.png" />
+    <None Remove="Data\HorizonGuideIcon.png" />
     <None Remove="Data\InformationButtonIcon.png" />
     <None Remove="Data\LineThicknessButtonIcon.png" />
     <None Remove="Data\ShowLineButtonIcon.png" />
@@ -44,6 +38,7 @@
     <Content Include="Data\HorizonGuideIcon.ico" />
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.2.0" />
     <PackageReference Include="WpfScreenHelper" Version="2.0.0" />
+    <Resource Include="Data\HorizonGuideIcon.png" />
     <Resource Include="Data\SwitchScreenButtonIcon.png" />
   </ItemGroup>
 
