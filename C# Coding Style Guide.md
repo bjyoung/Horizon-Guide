@@ -48,7 +48,7 @@ If a style is not covered here, then follow [Microsoft's C# Coding Conventions](
 
 - Maximum of one statement per line
 - Column limit: 150
-- Each indent done by one tab
+- Indent by four spaces
 - No line break before opening brace
 - No line break between closing brace and else
 - Always use braces even when optional
