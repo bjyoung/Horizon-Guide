@@ -21,7 +21,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C1CC45839FD742D9AA5A044B63BBBA98"
+        "MsmKey" = "8:_E44ECADE5E3045D1B251EC6EF467212D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -127,9 +127,9 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C1CC45839FD742D9AA5A044B63BBBA98"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E44ECADE5E3045D1B251EC6EF467212D"
             {
-            "SourcePath" = "8:..\\HorizonGuideIcon.ico"
+            "SourcePath" = "8:..\\Data\\HorizonGuideIcon.ico"
             "TargetName" = "8:HorizonGuideIcon.ico"
             "Tag" = "8:"
             "Folder" = "8:_35E3655F0364459DBE98253386FCBD90"
@@ -221,7 +221,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_C1CC45839FD742D9AA5A044B63BBBA98"
+        "ARPPRODUCTICON" = "8:_E44ECADE5E3045D1B251EC6EF467212D"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
