@@ -4,9 +4,9 @@ This document tracks all notables changes to the Horizon Guide app.
 
 ---
 
-## Unreleased
+## 1.1.2
 
-### 1.1.2
+### Added
 
 - Add C# style guide
 - Add README
@@ -36,7 +36,7 @@ This document tracks all notables changes to the Horizon Guide app.
 ### Added
 
 - Add switch screen button for when users have multiple monitors
-- Add shortcut information to information sub-window
+- Add shortcut information to information window
 
 ### Fixed
 
@@ -56,7 +56,7 @@ This document tracks all notables changes to the Horizon Guide app.
 
 ### Added
 
-- Add CTRL + W shortcut that closes sub-windows and the app itself
+- Add CTRL + W shortcut to sub-windows and the main window
 
 ---
 
@@ -80,13 +80,13 @@ This document tracks all notables changes to the Horizon Guide app.
 
 ### Added
 
-- Add button that opens the project information sub-window
+- Add button that opens the project information window
 
 ### Fixed
 
-- Fix bug where line thickness button crashes the app when used through .exe version
-- Fix line thickness sub-window setting line thickness to previous value, not current one
-- Sub-windows now close when app closes
+- Fix bug where line thickness button crashes the app
+- Fix line thickness being set to the previous value instead of the current one
+- Close sub-windows when the app closes
 
 ### Changed
 
@@ -119,7 +119,7 @@ This document tracks all notables changes to the Horizon Guide app.
 
 ### Fixed
 
-- Move slider to front so that the line does not cover thumb
+- Move slider to front so that the line does not cover the thumb
 
 ### Changed
 
@@ -135,11 +135,7 @@ This document tracks all notables changes to the Horizon Guide app.
 
 ### Fixed
 
-- Make line start where thumb is on the slider, instead of being offset
-
-### Change
-
-- Make buttons bigger so they are easier to see
+- Make line start where the thumb is on the slider, instead of being offset
 
 ---
 
