@@ -1,11 +1,11 @@
-﻿<local:CloseableWindow x:Class="Horizontal_Guide.MainWindow"
+﻿<local:CloseableWindow x:Class="HorizontalGuide.MainWindow"
         x:Name="FirstWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        xmlns:local="clr-namespace:Horizontal_Guide"
+        xmlns:local="clr-namespace:HorizontalGuide"
         mc:Ignorable="d"
         Title="Horizon Guide" Height="450" Width="800" 
         WindowState="Maximized"  SizeToContent="Manual"
@@ -19,11 +19,11 @@
     </Window.Background>
 
     <Window.Resources>
-        <Image x:Key="Change_Screen" Source="data/change_screen_button_icon.png"/>
-        <Image x:Key="Show" Source="data/show_line_button_icon.png"/>
-        <Image x:Key="Hide" Source="data/hide_line_button_icon.png" Visibility="Visible"/>
-        <Image x:Key="Line_Thickness" Source="data/line_thickness_button_icon.png"/>
-        <Image x:Key="Information" Source="data/information_button_icon.png"/>
+        <Image x:Key="Change_Screen" Source="../Data/SwitchScreenButtonIcon.png"/>
+        <Image x:Key="Show" Source="../Data/ShowLineButtonIcon.png"/>
+        <Image x:Key="Hide" Source="../Data/HideLineButtonIcon.png" Visibility="Visible"/>
+        <Image x:Key="Line_Thickness" Source="../Data/LineThicknessButtonIcon.png"/>
+        <Image x:Key="Information" Source="../Data/InformationButtonIcon.png"/>
     </Window.Resources>
 
     <Window.CommandBindings>

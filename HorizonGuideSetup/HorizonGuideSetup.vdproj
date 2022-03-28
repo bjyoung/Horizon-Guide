@@ -15,13 +15,13 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_3B9A1B821B0944C89F3EB2EB5D7708AE"
+        "MsmKey" = "8:_3BE4D85720FC440FA996E0538DC5FEEE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3BE4D85720FC440FA996E0538DC5FEEE"
+        "MsmKey" = "8:_C1CC45839FD742D9AA5A044B63BBBA98"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -127,10 +127,10 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3B9A1B821B0944C89F3EB2EB5D7708AE"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C1CC45839FD742D9AA5A044B63BBBA98"
             {
-            "SourcePath" = "8:..\\horizon_guide_icon.ico"
-            "TargetName" = "8:horizon_guide_icon.ico"
+            "SourcePath" = "8:..\\HorizonGuideIcon.ico"
+            "TargetName" = "8:HorizonGuideIcon.ico"
             "Tag" = "8:"
             "Folder" = "8:_35E3655F0364459DBE98253386FCBD90"
             "Condition" = "8:"
@@ -203,15 +203,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Horizon Guide"
-        "ProductCode" = "8:{2646DAF5-1A3C-443E-940A-FE449062AA27}"
-        "PackageCode" = "8:{9BC64B30-848B-40F8-820C-231AAAAE5E76}"
+        "ProductCode" = "8:{09852E0F-6187-47CB-98BD-172E4270BB61}"
+        "PackageCode" = "8:{787E0903-7C42-483C-ACD7-99D9FBE6DDB2}"
         "UpgradeCode" = "8:{60A3F480-8BEF-4D3D-BB86-E8B00EBFBB58}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1.1"
+        "ProductVersion" = "8:1.1.2"
         "Manufacturer" = "8:Brandon Young"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -221,7 +221,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_3B9A1B821B0944C89F3EB2EB5D7708AE"
+        "ARPPRODUCTICON" = "8:_C1CC45839FD742D9AA5A044B63BBBA98"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"

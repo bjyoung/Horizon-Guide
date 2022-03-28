@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Horizontal_Guide
+namespace HorizontalGuide
 {
     /// <summary>
     /// Interaction logic for App.xaml

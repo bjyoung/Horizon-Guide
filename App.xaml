@@ -1,8 +1,8 @@
-﻿<Application x:Class="Horizontal_Guide.App"
+﻿<Application x:Class="HorizontalGuide.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Horizontal_Guide"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:HorizontalGuide"
+             StartupUri="Windows\MainWindow.xaml">
     <Application.Resources>
         
     </Application.Resources>
